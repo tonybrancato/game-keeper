@@ -1,0 +1,100 @@
+const bodyParser = require('body-parser');
+const express = require('express');
+const mongoose = require('mongoose');
+// ES6 promises for mongoose
+mongoose.Promise = global.Promise;
+
+const {PORT, DATABASE_URL} = require('./config');
+const {BoardGame} = require('./models');
+
+const app = express();
+app.use(bodyParser.json());
+
+app.get('/board-games', (req, res) => {
+  BoardGame
+    .find()
+    .limit(10)
+    .then(boardGames => {
+      res.json({
+        boardGames: boardGames.map(
+          (boardGame) => boardGame.apiRepr())
+      });
+    })
+    .catch(
+      err => {
+        console.error(err);
+        res.status(500).json({message: 'Internal server error'});
+    });
+});
+
+app.post('/board-games', (req, res) => {
+
+  const requiredFields = ['name'];
+  for (let i=0; i<requiredFields.length; i++) {
+    const field = requiredFields[i];
+    if (!(field in req.body)) {
+      const message = `Missing \`${field}\` in request body`
+      console.error(message);
+      return res.status(400).send(message);
+    }
+  }
+
+  BoardGame
+    .create({
+      name: req.body.name,
+      players: req.body.players,
+      genre: req.body.genre,
+      plays: req.body.plays})
+    .then(
+      boardGame => res.status(201).json(boardGame.apiRepr()))
+    .catch(err => {
+      console.error(err);
+      res.status(500).json({message: 'Internal server error'});
+    });
+});
+
+
+
+let server;
+
+// this function connects to our database, then starts the server
+function runServer(databaseUrl=DATABASE_URL, port=PORT) {
+
+  return new Promise((resolve, reject) => {
+    mongoose.connect(databaseUrl, err => {
+      if (err) {
+        return reject(err);
+      }
+      server = app.listen(port, () => {
+        console.log(`Your app is listening on port ${port}`);
+        resolve();
+      })
+      .on('error', err => {
+        mongoose.disconnect();
+        reject(err);
+      });
+    });
+  });
+}
+
+function closeServer() {
+  return mongoose.disconnect().then(() => {
+     return new Promise((resolve, reject) => {
+       console.log('Closing server');
+       server.close(err => {
+           if (err) {
+               return reject(err);
+           }
+           resolve();
+       });
+     });
+  });
+}
+
+// if server.js is called directly (aka, with `node server.js`), this block
+// runs. but we also export the runServer command so other code (for instance, test code) can start the server as needed.
+if (require.main === module) {
+  runServer().catch(err => console.error(err));
+};
+
+module.exports = {app, runServer, closeServer};
