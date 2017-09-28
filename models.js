@@ -15,6 +15,24 @@ const boardGameSchema = mongoose.Schema({
   }]
 });
 
+boardGameSchema.virtual('numOfPlayers').get(function() {
+  return `${this.players.min} to ${this.players.max}`.trim()});
+
+boardGameSchema.virtual('lastPlayDate').get(function() {
+  const playDateObj = this.plays.sort((a, b) => {return b.date - a.date})[0] || {};
+  return playDateObj.lastPlayDate;
+});
+
+boardGameSchema.methods.apiRepr = function() {
+
+  return {
+    id: this._id,
+    name: this.name,
+    players: this.numOfPlayers,
+    plays: this.plays.length,
+  };
+}
+
 const BoardGame = mongoose.model('BoardGame', boardGameSchema);
 
 module.exports = {BoardGame};
