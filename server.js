@@ -53,7 +53,29 @@ app.post('/board-games', (req, res) => {
     });
 });
 
+app.put('/board-games/:id', (req, res) => {
+ if (!(req.params.id && req.body.id && req.params.id === req.body.id)) {
+   const message = (
+     `request path id (${req.params.id}) and request body id
+     (${req.body.id}) must match`);
+   console.error(message);
+   res.status(400).json({message: message});
+ }
+ 
+ const toUpdate = {};
+ const updatableFields = ['name', 'plays'];
 
+ updatableFields.forEach(field => {
+   if (field in req.body) {
+     toUpdate[field] = req.body[field];
+   }
+ });
+
+ BoardGame
+  .findByIdAndUpdate(req.params.id, {$set: toUpdate})
+  .then(boardGame => res.status(204).end())
+  .catch(err => res.status(500).json({message: 'Internal server error'}));
+});
 
 let server;
 
