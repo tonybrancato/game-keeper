@@ -1,0 +1,1 @@
+{"_id":{"$oid":"59d0386d80e42c1f9dcce272"},"name":"Risk","genre":"Strategy","plays":[{"date":{"$date":"2017-09-27T04:00:00.000Z"},"players":5,"_id":{"$oid":"59d0386d80e42c1f9dcce273"}}],"players":{"min":2,"max":6},"__v":0}
