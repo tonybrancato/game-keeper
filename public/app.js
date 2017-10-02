@@ -1,4 +1,4 @@
-const GAMES_URL = '/localhost:8080/board-games';
+const GAMES_URL = '/board-games';
 
 function addGame(game) {
   console.log('Adding game: ' + game);
