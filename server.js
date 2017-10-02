@@ -13,6 +13,7 @@ app.use(bodyParser.json());
 app.use(morgan('common'));
 
 app.use(express.static('public'));
+app.use(express.static(path.join(__dirname, 'public')));
 
 app.get('/', (req, res) => {
   res.sendFile(__dirname + '/views/index.html');
