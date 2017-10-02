@@ -18,6 +18,7 @@
     "chai-http": "^3.0.0",
     "express": "^4.15.5",
     "faker": "^4.1.0",
+    "jquery-modal": "^0.8.2",
     "mocha": "^3.5.3",
     "mongoose": "^4.11.13",
     "morgan": "^1.9.0"
