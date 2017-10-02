@@ -10,6 +10,10 @@ const {BoardGame} = require('./models');
 const app = express();
 app.use(bodyParser.json());
 
+app.get('/', (req, res) => {
+  res.sendFile(__dirname + '/views/index.html');
+});
+
 app.get('/board-games', (req, res) => {
   BoardGame
     .find()
