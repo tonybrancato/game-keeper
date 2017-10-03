@@ -8,7 +8,6 @@ const boardGameSchema = mongoose.Schema({
     max: Number
   },
   genre: {type: String, required: true},
-  // grades will be an array of objects
   plays: [{
     date: Date,
     players: Number,
