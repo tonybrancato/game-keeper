@@ -23,6 +23,8 @@ function handleGameAdd () {
   });
 }
 
+
+// ready function, for page load
 $(function() {
   handleGameAdd();
 });

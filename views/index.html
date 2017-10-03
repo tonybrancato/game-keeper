@@ -13,16 +13,21 @@
     src="https://code.jquery.com/jquery-3.2.1.js"
     integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE="
     crossorigin="anonymous"></script>
-    <script src="/app.js"></script>
-    <link rel="stylesheet" type="text/css" href="/main.css">
+    <script src="jquery.modal.min.js" type="text/javascript" charset="utf-8"></script>
+    <script src="app.js"></script>
+    <link rel="stylesheet" type="text/css" href="main.css">
+    <link rel="stylesheet" type="text/css" href="jquery.modal.min.css">
   </head>
   <body>
-    <form id="addGameForm">
-      <label for="game-name">Game Name</label>
-      <input id="game-name" name="game-name" type="text" placeholder="e.g., Monopoly">
-      <label for="genre">Genre</label>
-      <input id="genre" name="genre" type="text" placeholder="e.g., Strategy">
-      <button type="submit" id="addGame">Add Game</button>
-    </form>
+    <a href="#addGameForm" rel="modal:open">Add Game</a>
+    <div id="addNewGame" style="display:none;">
+      <form id="addGameForm" class="modal">
+        <label for="game-name">Game Name</label>
+        <input id="game-name" name="game-name" type="text" placeholder="e.g., Monopoly">
+        <label for="genre">Genre</label>
+        <input id="genre" name="genre" type="text" placeholder="e.g., Strategy">
+        <button type="submit" id="addGame">Add Game</button>
+      </form>
+    </div>  
   </body>
 </html> 
