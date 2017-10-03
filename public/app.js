@@ -7,7 +7,7 @@ function addGame(game) {
     url: GAMES_URL,
     data: JSON.stringify(game),
     success: function(data) {
-      alert('successfully added game');
+      $.modal.close();
     },
     dataType: 'json',
     contentType: 'application/json'

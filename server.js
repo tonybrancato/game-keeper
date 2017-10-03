@@ -1,5 +1,6 @@
 const bodyParser = require('body-parser');
 const express = require('express');
+const morgan = require('morgan');
 const mongoose = require('mongoose');
 // ES6 promises for mongoose
 mongoose.Promise = global.Promise;
@@ -10,7 +11,7 @@ const {BoardGame} = require('./models');
 const app = express();
 app.use(bodyParser.json());
 
-//app.use(morgan('common'));
+app.use(morgan('common'));
 
 app.use(express.static('public'));
 
