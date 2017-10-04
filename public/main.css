@@ -3,6 +3,9 @@ input {
   
 }
 
-.modal {
-  text-align: center;
+.game-box {
+  border: 1px solid black;
+  height: 200px;
+  width: 200px;
+  display: inline-block;
 }

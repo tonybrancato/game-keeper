@@ -103,6 +103,10 @@ app.delete('/api-board-games/:id', (req, res) => {
     .catch(err => res.status(500).json({message: 'Internal server error'}));
 });
 
+app.use('*', function(req, res) {
+  res.status(404).json({message: 'Not Found'});
+});
+
 let server;
 
 // this function connects to our database, then starts the server

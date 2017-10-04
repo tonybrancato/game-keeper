@@ -1,5 +1,31 @@
 const GAMES_URL = '/api-board-games';
 
+let boardGameTemplate = (
+  '<div class="game-box js-bgame">' +
+    '<h3 class="js-bgame-name"><h3>' +
+    '<hr>' +
+    '<div class="bgame-controls">' +
+      '<button class="js-bgame-delete">' +
+        '<span class="button-label">delete</span>' +
+      '</button>' +
+    '</div>' +
+  '</div>'
+);
+
+function getAndDisplayBoardGames() {
+  console.log('Retrieving Board Games')
+  $.getJSON(GAMES_URL, function(boardGames) {
+    console.log('Rendering Board Game Library');
+    let boardGameElements = boardGames.map(function(boardGame) {
+      let element = $(boardGameTemplate);
+      element.attr('id', boardGame.id);
+      element.find('.js-bgame-name').text(boardGame.name);
+      return element;
+    });
+    $('.game-box').html(boardGameElements)
+  });
+}
+
 function addGame(game) {
   console.log('Adding game: ' + game);
   $.ajax({
@@ -34,6 +60,7 @@ function updateGame(game) {
   })
 }
 
+
 function handleGameAdd () {
   $('#addGameForm').submit(function(e) {
     e.preventDefault();
@@ -47,5 +74,6 @@ function handleGameAdd () {
 
 // ready function, for page load
 $(function() {
+  getAndDisplayBoardGames();
   handleGameAdd();
 });
