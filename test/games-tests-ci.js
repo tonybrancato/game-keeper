@@ -58,7 +58,7 @@ describe('GET endpoint', function() {
 
       let res;
       return chai.request(app)
-        .get('/board-games')
+        .get('/api-board-games')
         .then(function(_res) {
           res = _res;
           res.should.have.status(200);
