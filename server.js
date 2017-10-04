@@ -82,7 +82,7 @@ app.put('/api-board-games/:id', (req, res) => {
  }
  
  const toUpdate = {};
- const updatableFields = ['name', 'plays'];
+ const updatableFields = ['plays'];
 
  updatableFields.forEach(field => {
    if (field in req.body) {
@@ -94,6 +94,13 @@ app.put('/api-board-games/:id', (req, res) => {
   .findByIdAndUpdate(req.params.id, {$set: toUpdate})
   .then(boardGame => res.status(204).end())
   .catch(err => res.status(500).json({message: 'Internal server error'}));
+});
+
+app.delete('/api-board-games/:id', (req, res) => {
+  BoardGame
+    .findByIdAndRemove(req.params.id)
+    .then(boardGame => res.status(204).end())
+    .catch(err => res.status(500).json({message: 'Internal server error'}));
 });
 
 let server;
