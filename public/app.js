@@ -1,4 +1,4 @@
-const GAMES_URL = '/board-games';
+const GAMES_URL = '/api-board-games';
 
 function addGame(game) {
   console.log('Adding game: ' + game);
@@ -7,12 +7,33 @@ function addGame(game) {
     url: GAMES_URL,
     data: JSON.stringify(game),
     success: function(data) {
-      $.modal.close();
+      $.ajax({
+        method: 'GET',
+        url: '/',
+        data: '',
+        success: function(data) {
+          $('.modal-input').val("");
+          $.modal.close();
+        }
+      });
     },
     dataType: 'json',
     contentType: 'application/json'
   });
 }
+
+function updateGame(game) {
+  console.log('updating game with' + game);
+  $.ajax({
+    method: 'PUT',
+    url: GAMES_URL,
+    data: JSON.stringify(game),
+    success: function(data) {
+      
+    }
+  })
+}
+
 function handleGameAdd () {
   $('#addGameForm').submit(function(e) {
     e.preventDefault();

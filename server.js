@@ -19,7 +19,7 @@ app.get('/', (req, res) => {
   res.sendFile(__dirname + '/views/index.html');
 });
 
-app.get('/board-games', (req, res) => {
+app.get('/api-board-games', (req, res) => {
   BoardGame
     .find()
     .limit(10)
@@ -36,7 +36,17 @@ app.get('/board-games', (req, res) => {
     });
 });
 
-app.post('/board-games', (req, res) => {
+app.get('/api-board-games/:id', (req, res) => {
+  BoardGame
+    .findById(req.params.id)
+    .then(boardGame =>res.json(boardGame.apiRepr()))
+    .catch(err => {
+      console.error(err);
+        res.status(500).json({message: 'Internal server error'})
+    });
+})
+
+app.post('/api-board-games', (req, res) => {
 
   const requiredFields = ['name'];
   for (let i=0; i<requiredFields.length; i++) {
@@ -62,7 +72,7 @@ app.post('/board-games', (req, res) => {
     });
 });
 
-app.put('/board-games/:id', (req, res) => {
+app.put('/api-board-games/:id', (req, res) => {
  if (!(req.params.id && req.body.id && req.params.id === req.body.id)) {
    const message = (
      `request path id (${req.params.id}) and request body id
