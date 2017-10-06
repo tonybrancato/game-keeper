@@ -71,9 +71,15 @@ function handleGameAdd () {
   });
 }
 
-
+function handleGameDelete () {
+  $('body').on('click', '.js-bgame-delete', (function() {
+    // e.preventDefault();
+    alert('e');
+  }));
+}
 // ready function, for page load
 $(function() {
   getAndDisplayBoardGames();
   handleGameAdd();
+  handleGameDelete();
 });
