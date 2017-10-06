@@ -1,29 +1,36 @@
 const GAMES_URL = '/api-board-games';
 
-let boardGameTemplate = (
-  '<div class="game-box js-bgame">' +
-    '<h3 class="js-bgame-name"><h3>' +
-    '<hr>' +
-    '<div class="bgame-controls">' +
-      '<button class="js-bgame-delete">' +
-        '<span class="button-label">delete</span>' +
-      '</button>' +
-    '</div>' +
-  '</div>'
-);
+function makeBoardGame(id, name) {
+  return (
+    '<div class="js-bgame" id="' + id + '">' +
+      '<h3 class="js-bgame-name">' + name + '<h3>' +
+      '<div class="bgame-controls">' +
+        '<button class="js-bgame-delete">' +
+          '<span class="button-label">delete</span>' +
+        '</button>' +
+      '</div>' +
+    '</div>'
+  );
+}
 
+// retrieve games from the db and display each of them in their
+// own box in the DOM. 
 function getAndDisplayBoardGames() {
   console.log('Retrieving Board Games')
-  $.getJSON(GAMES_URL, function(boardGames) {
+  $.getJSON(GAMES_URL, function(result) {
     console.log('Rendering Board Game Library');
-    let boardGameElements = boardGames.map(function(boardGame) {
-      let element = $(boardGameTemplate);
-      element.attr('id', boardGame.id);
-      element.find('.js-bgame-name').text(boardGame.name);
-      return element;
-    });
-    $('.game-box').html(boardGameElements)
-  });
+    // console.log(result.boardGames);
+      let element = result.boardGames;
+      console.log(element)
+    // let testGame = makeBoardGame(result.boardGames[0].id, result.boardGames[0].name);
+    // // console.log(testGame);
+     let boardGameElements = $(element).map(function(i) {
+      return makeBoardGame(element[i].id, element[i].name);
+     }).get();
+     console.log(boardGameElements);
+     $('.game-box').html(boardGameElements); 
+  }); 
+
 }
 
 function addGame(game) {
@@ -33,15 +40,8 @@ function addGame(game) {
     url: GAMES_URL,
     data: JSON.stringify(game),
     success: function(data) {
-      $.ajax({
-        method: 'GET',
-        url: '/',
-        data: '',
-        success: function(data) {
-          $('.modal-input').val("");
-          $.modal.close();
-        }
-      });
+      $('.modal-input').val("");
+      location.reload();
     },
     dataType: 'json',
     contentType: 'application/json'

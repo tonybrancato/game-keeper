@@ -4,8 +4,12 @@ input {
 }
 
 .game-box {
+  display: block;
+}
+
+.js-bgame {
   border: 1px solid black;
-  height: 200px;
-  width: 200px;
-  display: inline-block;
+  height: 150px;
+  width: 150px;
+  text-align: center;
 }
