@@ -1,15 +1,17 @@
 const GAMES_URL = '/api-board-games';
 
-function makeBoardGame(id, name) {
+function makeBoardGame(id, name, players, plays) {
   return (
-    '<div class="js-bgame" id="' + id + '">' +
-      '<h3 class="js-bgame-name">' + name + '<h3>' +
-      '<div class="bgame-controls">' +
-        '<button class="js-bgame-delete">' +
-          '<span class="button-label">delete</span>' +
-        '</button>' +
-      '</div>' +
-    '</div>'
+    `<div class="js-bgame" id="${id}">
+      <h3 class="js-bgame-name">${name}</h3>
+      <h4 class="js-bgame-players">Players: ${players}</h4>
+      <h4 class="js-bgame-plays">Total Plays: ${plays}</h4>
+      <div class="bgame-controls">
+        <button class="js-bgame-delete">
+          <span class="button-label">delete</span>
+        </button>
+      </div> 
+    </div>`
   );
 }
 
@@ -25,7 +27,7 @@ function getAndDisplayBoardGames() {
     // let testGame = makeBoardGame(result.boardGames[0].id, result.boardGames[0].name);
     // // console.log(testGame);
      let boardGameElements = $(element).map(function(i) {
-      return makeBoardGame(element[i].id, element[i].name);
+      return makeBoardGame(element[i].id, element[i].name, element[i].players, element[i].plays);
      }).get();
      console.log(boardGameElements);
      $('.game-box').html(boardGameElements); 
