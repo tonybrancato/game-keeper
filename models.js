@@ -4,8 +4,8 @@ const mongoose = require('mongoose');
 const boardGameSchema = mongoose.Schema({
   name: {type: String, required: true},
   players: {
-    min: String,
-    max: String
+    min: Number,
+    max: Number
   },
   genre: {type: String, required: true},
   plays: [{
@@ -29,6 +29,7 @@ boardGameSchema.methods.apiRepr = function() {
     name: this.name,
     players: this.numOfPlayers,
     plays: this.plays.length,
+    lastPlay: this.lastPlayDate,
   };
 }
 

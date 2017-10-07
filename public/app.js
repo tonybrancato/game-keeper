@@ -76,7 +76,11 @@ function handleGameAdd () {
     e.preventDefault();
     addGame({
       name: $(e.currentTarget).find('#game-name').val(),
-      genre: $(e.currentTarget).find('#genre').val()
+      genre: $(e.currentTarget).find('#genre').val(),
+      players: {
+        min: $(e.currentTarget).find('#numPlayersMin').val(),
+        max: $(e.currentTarget).find('#numPlayersMax').val(),
+      }
     });
   });
 }
