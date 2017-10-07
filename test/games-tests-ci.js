@@ -62,6 +62,9 @@ describe('GET endpoint', function() {
         .then(function(_res) {
           res = _res;
           res.should.have.status(200);
+
+          // should retrieve all board game
+
           /*res.body.should.have.length.of.at.least(1);          
           return BoardGame.count();
           })
@@ -70,4 +73,11 @@ describe('GET endpoint', function() {
           */});
         });
     });
+  
+  // POST
+
+  // PUT
+
+  // DELETE
+
 });
