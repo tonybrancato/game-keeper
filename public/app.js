@@ -60,6 +60,14 @@ function updateGame(game) {
   })
 }
 
+function deleteGame(gameId) {
+  console.log(`deleting ${gameId} from database`)
+  $.ajax({
+    method: 'DELETE',
+    url: GAMES_URL + '/' + gameId,
+    success: getAndDisplayBoardGames
+  });
+}
 
 function handleGameAdd () {
   $('#addGameForm').submit(function(e) {
@@ -72,9 +80,9 @@ function handleGameAdd () {
 }
 
 function handleGameDelete () {
-  $('body').on('click', '.js-bgame-delete', (function() {
-    // e.preventDefault();
-    alert('e');
+  $('body').on('click', '.js-bgame-delete', (function(e) {
+    e.preventDefault();
+    deleteGame($(e.currentTarget).closest('.js-bgame').attr('id'));
   }));
 }
 // ready function, for page load
