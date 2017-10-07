@@ -4,8 +4,8 @@ const mongoose = require('mongoose');
 const boardGameSchema = mongoose.Schema({
   name: {type: String, required: true},
   players: {
-    min: Number,
-    max: Number
+    min: String,
+    max: String
   },
   genre: {type: String, required: true},
   plays: [{
