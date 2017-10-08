@@ -1,4 +1,4 @@
-const GAMES_URL = '/api-board-games';
+const GAMES_URL = '/api/board-games';
 
 function makeBoardGame(id, name, players, plays) {
   return (
@@ -8,7 +8,10 @@ function makeBoardGame(id, name, players, plays) {
       <h4 class="js-bgame-plays">Total Plays: ${plays}</h4>
       <div class="bgame-controls">
         <button class="js-bgame-delete">
-          <span class="button-label">delete</span>
+          <span class="button-label">delete</span>          
+        </button>
+        <button class="js-bgame-add-play">
+          <span class="button-label">Add Play</span>
         </button>
       </div> 
     </div>`
@@ -21,11 +24,8 @@ function getAndDisplayBoardGames() {
   console.log('Retrieving Board Games')
   $.getJSON(GAMES_URL, function(result) {
     console.log('Rendering Board Game Library');
-    // console.log(result.boardGames);
       let element = result.boardGames;
       console.log(element)
-    // let testGame = makeBoardGame(result.boardGames[0].id, result.boardGames[0].name);
-    // // console.log(testGame);
      let boardGameElements = $(element).map(function(i) {
       return makeBoardGame(element[i].id, element[i].name, element[i].players, element[i].plays);
      }).get();
@@ -91,6 +91,11 @@ function handleGameDelete () {
     deleteGame($(e.currentTarget).closest('.js-bgame').attr('id'));
   }));
 }
+
+function handlePlayUpdate () {
+
+}
+
 // ready function, for page load
 $(function() {
   getAndDisplayBoardGames();
