@@ -56,8 +56,7 @@ function updateGame(game) {
     method: 'PUT',
     url: GAMES_URL,
     data: JSON.stringify(game),
-    success: function(data) {
-      
+    success: function(data) {      
     }
   })
 }
