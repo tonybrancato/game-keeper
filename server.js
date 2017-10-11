@@ -5,7 +5,7 @@ const mongoose = require('mongoose');
 const passport = require('passport');
 
 
-// const {router: usersRouter} = require('./users');
+const {router: usersRouter} = require('./users');
 // const {router: authRouter, basicStrategy, jwtStrategy} = require('./auth');
 const gamesRouter = require('./board-games/router.js')
 
@@ -26,14 +26,25 @@ app.use(passport.initialize());
 // passport.use(basicStrategy);
 // passport.use(jwtStrategy);
 
-// app.use('/api/users/', usersRouter);
+app.use('/api/users/', usersRouter);
 // app.use('/api/auth/', authRouter);
 
-app.get('/', (req, res) => {
-  res.sendFile(__dirname + '/views/index.html');
-});
+// app.get('/', (req, res) => {
+//   res.sendFile(__dirname + '/views/index.html');
+// });
 
 app.use('/api/board-games', gamesRouter);
+
+// 
+// app.get(
+//     '/api/board-games',
+//     passport.authenticate('jwt', {session: false}),
+//     (req, res) => {
+//         return res.json({
+//             data: 'rosebud'
+//         });
+//     }
+// );
 
 app.use('*', function(req, res) {
   res.status(404).json({message: 'Not Found'});
