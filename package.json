@@ -17,6 +17,7 @@
     "body-parser": "^1.18.2",
     "chai": "^4.1.2",
     "chai-http": "^3.0.0",
+    "dotenv": "^4.0.0",
     "express": "^4.15.5",
     "faker": "^4.1.0",
     "jquery-modal": "^0.8.2",
@@ -27,6 +28,7 @@
     "normalize.css": "^7.0.0",
     "passport": "^0.4.0",
     "passport-http": "^0.3.0",
-    "passport-jwt": "^3.0.0"
+    "passport-jwt": "^3.0.0",
+    "passport-local": "^1.0.0"
   }
 }
