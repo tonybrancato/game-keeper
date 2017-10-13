@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title></title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script
+    src="https://code.jquery.com/jquery-3.2.1.js"
+    integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE="
+    crossorigin="anonymous"></script>
+    <script src="users.js" type="text/javascript" charset="utf-8"></script>
+    <script src="login.js" type="text/javascript" charset="utf-8"></script>
+    <script src="jquery.modal.min.js" type="text/javascript" charset="utf-8"></script>
+    <link rel="stylesheet" type="text/css" href="normalize.css">
+    <link rel="stylesheet" type="text/css" href="grid.css">
+    <link rel="stylesheet" type="text/css" href="main.css">
+    <link rel="stylesheet" type="text/css" href="jquery.modal.min.css">
+  </head>
+  <body>
+  <div class="credential-box">
+    <form id="loginForm">
+      <label for="username">Username</label>
+      <input type="text" class="username" name="username" id="username">
+      <label for="password">Password</label>
+      <input class="password" type="password" name="password" id="password">
+      <button type="submit" id="loginBtn" class="login btn">Sign In</button>
+    </form>
+  </div>
+  <p class="no-account">No Account? Sign up <a href="#signUpForm" rel="modal:open">here</a>.</p>
+  <div class="sign-up" style="display:none;">
+    <form id="signUpForm" class="modal" method="GET" >
+      <label for="first-name ">First Name</label>
+      <input class="first-name modal-input" type="text" name="first-name modal-input" id="first-name">
+      <label for="last-name">Last Name</label>
+      <input class="last-name modal-input" name="last-name modal-input" type="text"  id="last-name">
+      <label for="email">Email Address</label>
+      <input class="email modal-input" type="text"  name="email" id="email">
+      <label for="new-username">Username</label>
+      <input class="new-username modal-input" type="text"  name="new-username" id="new-username">
+      <label for="new-password">Password</label>
+      <input class="new-password modal-input" type="password"  name="new-password" id="new-password">
+      <button type="submit" class="signUp btn" id="addUserBtn">SUBMIT</button>
+      <p class="auth-error"></p>
+    </form>
+  </div>
+  </body>
+</html>

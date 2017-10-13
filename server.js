@@ -34,9 +34,8 @@ app.use('/api/auth/', authRouter);
 
 app.use('/api/board-games', gamesRouter);
 
-// 
-// app.get(
-//     '/api/board-games',
+
+// app.get('/api/board-games',
 //     passport.authenticate('jwt', {session: false}),
 //     (req, res) => {
 //         return res.json({

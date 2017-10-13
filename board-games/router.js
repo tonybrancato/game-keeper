@@ -5,9 +5,6 @@ const mongoose = require('mongoose');
 const passport = require('passport');
 const router = express.Router();
 
-// const {router: usersRouter} = require('./users');
-// const {router: authRouter, basicStrategy, jwtStrategy} = require('./auth');
-
 // ES6 promises for mongoose
 mongoose.Promise = global.Promise;
 

@@ -1,0 +1,68 @@
+/* font-family: 'Roboto', sans-serif;
+font-family: 'Open Sans', sans-serif;
+font-family: 'Montserrat', sans-serif; */
+
+* {
+  box-sizing: border-box;  
+}
+
+html {
+  /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#e4efc0+22,abbd73+63 */
+  background: #e4efc0; /* Old browsers */
+  background: -moz-linear-gradient(-45deg, #e4efc0 22%, #abbd73 63%); /* FF3.6-15 */
+  background: -webkit-linear-gradient(-45deg, #e4efc0 22%,#abbd73 63%); /* Chrome10-25,Safari5.1-6 */
+  background: linear-gradient(135deg, #e4efc0 22%,#abbd73 63%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#e4efc0', endColorstr='#abbd73',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
+}
+
+header {
+  font-family: 'Montserrat', sans-serif;
+}
+
+.game-icon {
+  width: 50px;
+  height: 50px;
+}
+
+input {
+  display: block;
+  
+}
+
+body {
+  text-align: center;
+  max-width: 1000px;
+}
+
+.game-box {
+  display: inline-block;
+}
+
+button {
+  cursor: pointer;
+}
+
+.js-bgame-name {
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+.modal {
+  background-color: pink;
+}
+
+.js-bgame {
+  display: inline-block;
+  /* border: 2px solid black; */
+  height: 200px;
+  width: 200px;
+  background-color: yellowgreen;
+  text-align: center;
+  /* border-radius: 4pt; */
+  font-family: 'Open Sans', sans-serif;
+  box-shadow: 0 3px 2px -2px black;
+}
+
+.js-bgame:hover {
+  background-color: pink;
+}

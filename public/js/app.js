@@ -2,7 +2,7 @@ const GAMES_URL = '/api/board-games';
 
 function makeBoardGame(id, name, players, plays) {
   return (
-    `<div class="js-bgame" id="${id}">
+    `<div class="js-bgame col" id="${id}">
       <h3 class="js-bgame-name">${name}</h3>
       <h4 class="js-bgame-players">Players: ${players}</h4>
       <h4 class="js-bgame-plays">Total Plays: ${plays}</h4>
@@ -24,13 +24,15 @@ function getAndDisplayBoardGames() {
   console.log('Retrieving Board Games')
   $.getJSON(GAMES_URL, function(result) {
     console.log('Rendering Board Game Library');
-      let element = result.boardGames;
-      console.log(element)
-     let boardGameElements = $(element).map(function(i) {
-      return makeBoardGame(element[i].id, element[i].name, element[i].players, element[i].plays);
-     }).get();
-     console.log(boardGameElements);
-     $('.game-box').html(boardGameElements); 
+  	let element = result.boardGames;
+    console.log(element)
+    let boardGameElements = $(element).map(function(i) {
+     return makeBoardGame(element[i].id, element[i].name, element[i].players, element[i].plays);
+    }).get();
+    console.log(boardGameElements);
+		$('.game-box').html(boardGameElements); 
+		$('.js-bgame').velocity("transition.swoopIn", { duration: 750 })
+
   }); 
 
 }
@@ -52,13 +54,13 @@ function addGame(game) {
 
 function updateGame(game) {
   console.log('updating game with' + game);
+  console.log(GAMES_URL + '/' + game.id);
   $.ajax({
     method: 'PUT',
-    url: GAMES_URL,
+    url: GAMES_URL + '/' + game.id,
     data: JSON.stringify(game),
-    success: function(data) {      
-    }
-  })
+    success: getAndDisplayBoardGames
+  });
 }
 
 function deleteGame(gameId) {
@@ -66,19 +68,20 @@ function deleteGame(gameId) {
   $.ajax({
     method: 'DELETE',
     url: GAMES_URL + '/' + gameId,
-    success: getAndDisplayBoardGames
+		success: getAndDisplayBoardGames
   });
 }
 
 function handleGameAdd () {
   $('#addGameForm').submit(function(e) {
     e.preventDefault();
+    const bgame = $(e.currentTarget);
     addGame({
-      name: $(e.currentTarget).find('#game-name').val(),
-      genre: $(e.currentTarget).find('#genre').val(),
+      name: bgame.find('#game-name').val(),
+      genre: bgame.find('#genre').val(),
       players: {
-        min: $(e.currentTarget).find('#numPlayersMin').val(),
-        max: $(e.currentTarget).find('#numPlayersMax').val(),
+        min: bgame.find('#numPlayersMin').val(),
+        max: bgame.find('#numPlayersMax').val(),
       }
     });
   });
@@ -87,12 +90,24 @@ function handleGameAdd () {
 function handleGameDelete () {
   $('body').on('click', '.js-bgame-delete', (function(e) {
     e.preventDefault();
-    deleteGame($(e.currentTarget).closest('.js-bgame').attr('id'));
+		deleteGame($(e.currentTarget).closest('.js-bgame').attr('id'),
+		$(this).velocity("transition.swoopOut", { duration: 750 })
+);
   }));
 }
 
 function handlePlayUpdate () {
-
+  $('body').on('click', '.js-bgame-add-play', (function(e) {
+    e.preventDefault();
+    let bgame = $(e.currentTarget);
+    updateGame({
+      id: $(e.currentTarget).closest('.js-bgame').attr('id'),
+      plays: {
+        date: Date(),
+        players: 2 
+      }
+    })
+  }))
 }
 
 // ready function, for page load
@@ -100,4 +115,5 @@ $(function() {
   getAndDisplayBoardGames();
   handleGameAdd();
   handleGameDelete();
+  handlePlayUpdate();
 });

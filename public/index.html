@@ -6,47 +6,60 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title></title>
+    <title>Game Keeper</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <script
     src="https://code.jquery.com/jquery-3.2.1.js"
     integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE="
     crossorigin="anonymous"></script>
-    <script src="users.js" type="text/javascript" charset="utf-8"></script>
-    <script src="login.js" type="text/javascript" charset="utf-8"></script>
-    <script src="jquery.modal.min.js" type="text/javascript" charset="utf-8"></script>
-    <link rel="stylesheet" type="text/css" href="normalize.css">
-    <link rel="stylesheet" type="text/css" href="grid.css">
-    <link rel="stylesheet" type="text/css" href="main.css">
-    <link rel="stylesheet" type="text/css" href="jquery.modal.min.css">
+    <script src="./js/jquery.modal.min.js" type="text/javascript" charset="utf-8"></script>
+    <script src="//cdn.jsdelivr.net/velocity/1.5/velocity.min.js"></script>
+    <script src="//cdn.jsdelivr.net/velocity/1.5/velocity.ui.min.js"></script>
+    <script src="./js/app.js"></script>
+    <link href="https://fonts.googleapis.com/css?family=Montserrat|Open+Sans|Roboto" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="./styles/normalize.css">
+    <link rel="stylesheet" type="text/css" href="./styles/grid.css">
+    <link rel="stylesheet" type="text/css" href="./styles/main.css">
+    <link rel="stylesheet" type="text/css" href="./styles/jquery.modal.min.css">
+    
   </head>
+  <!---Banner/Title-->
+  
+  <header class="header section group span_12_of_12">
+    <h1 class="banner" role="banner">GameKeeper</h1>
+    <img class="game-icon" src="./imgs/meeple.svg">
+    <img class="game-icon" src="./imgs/dice-twenty.svg">
+    <img class="game-icon" src="./imgs/poker-hand.svg">
+    <img class="game-icon" src="./imgs/console-controller.svg">
+
+  </header>
+
   <body>
-  <div class="credential-box">
-    <form id="loginForm">
-      <label for="username">Username</label>
-      <input type="text" class="username" name="username" id="username">
-      <label for="password">Password</label>
-      <input class="password" type="password" name="password" id="password">
-      <button type="submit" id="loginBtn" class="login btn">Sign In</button>
-    </form>
-  </div>
-  <p class="no-account">No Account? Sign up <a href="#signUpForm" rel="modal:open">here</a>.</p>
-  <div class="sign-up" style="display:none;">
-    <form id="signUpForm" class="modal" method="GET" >
-      <label for="first-name ">First Name</label>
-      <input class="first-name modal-input" type="text" name="first-name modal-input" id="first-name">
-      <label for="last-name">Last Name</label>
-      <input class="last-name modal-input" name="last-name modal-input" type="text"  id="last-name">
-      <label for="email">Email Address</label>
-      <input class="email modal-input" type="text"  name="email" id="email">
-      <label for="new-username">Username</label>
-      <input class="new-username modal-input" type="text"  name="new-username" id="new-username">
-      <label for="new-password">Password</label>
-      <input class="new-password modal-input" type="password"  name="new-password" id="new-password">
-      <button type="submit" class="signUp btn" id="addUserBtn">SUBMIT</button>
-      <p class="auth-error"></p>
-    </form>
-  </div>
+    <a href="#addGameForm" rel="modal:open">Add Game</a>
+    <div id="addNewGame" style="display:none;">
+      <form id="addGameForm" class="modal">
+        <label for="game-name">Game Name</label>
+        <input id="game-name" class="modal-input" name="game-name" type="text" placeholder="e.g., Monopoly">
+        <label for="numPlayers">Minimum Players</label>
+        <input id="numPlayersMin" class="modal-input" name="numPlayersMin" type="text" placeholder="1">
+        <label for="numPlayers">Maximum Players</label>
+        <input id="numPlayersMax" class="modal-input" name="numPlayersMax" type="text" placeholder="6">
+        <label for="genre">Genre</label>
+        <input id="genre" class="modal-input" name="genre" type="text" placeholder="e.g., Strategy">
+        <button type="submit" id="addGame">Add Game</button>
+      </form>
+    </div>  
+    <div id="updatePlay" style="display:none;">
+      <form id="updatePlayForm" class="modal">
+        <label for="gamePlayers">How many players were there?</label>
+        <input id="addPlayers" class="modal-input" name="players">
+      </form> 
+    </div>
+    <main>
+      <div class="game-box section group">
+        
+      </div>
+    </main>
   </body>
-</html>
+</html> 
