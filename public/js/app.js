@@ -3,15 +3,15 @@ const GAMES_URL = '/api/board-games';
 function makeBoardGame(id, name, players, plays) {
   return (
     `<div class="js-bgame col" id="${id}">
-      <h3 class="js-bgame-name game-name">${name}</h3>
+      <h3 class="js-bgame-name game-name"><span class="name-text">${name}</span></h3>
       <h4 class="js-bgame-players">Players: ${players}</h4>
       <h4 class="js-bgame-plays">Total Plays: ${plays}</h4>
       <div class="bgame-controls">
-        <button class="js-game-btn span_5_of_12 js-bgame-delete">
-          <span class="button-label">delete</span>          
-        </button>
-        <button class="js-game-btn span_5_of_12 js-bgame-add-play">
+				<button class="js-game-btn span_5_of_12 js-bgame-add-play">
           <span class="button-label">Add Play</span>
+        </button>
+				<button class="js-game-btn span_5_of_12 js-bgame-delete">
+          <span class="button-label">Delete</span>          
         </button>
       </div> 
     </div>`
@@ -21,20 +21,14 @@ function makeBoardGame(id, name, players, plays) {
 // retrieve games from the db and display each of them in their
 // own box in the DOM. 
 function getAndDisplayBoardGames() {
-  console.log('Retrieving Board Games')
   $.getJSON(GAMES_URL, function(result) {
-    console.log('Rendering Board Game Library');
   	let element = result.boardGames;
-    console.log(element)
     let boardGameElements = $(element).map(function(i) {
      return makeBoardGame(element[i].id, element[i].name, element[i].players, element[i].plays);
     }).get();
-    console.log(boardGameElements);
 		$('.game-box').html(boardGameElements); 
 		$('.js-bgame').velocity("transition.swoopIn", { duration: 600, stagger: 100 })
-
   }); 
-
 }
 
 function addGame(game) {

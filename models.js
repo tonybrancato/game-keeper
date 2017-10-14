@@ -15,6 +15,10 @@ const boardGameSchema = mongoose.Schema({
 });
 
 boardGameSchema.virtual('numOfPlayers').get(function() {
+  if (`${this.players.min}` === `${this.players.max}`) {
+    return `${this.players.min}`;
+  }
+  else 
   return `${this.players.min} to ${this.players.max}`.trim()});
 
 boardGameSchema.virtual('lastPlayDate').get(function() {

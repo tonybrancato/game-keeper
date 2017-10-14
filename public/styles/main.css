@@ -33,10 +33,6 @@ input {
   display: block;
 }
 
-body {
-
-}
-
 main {
   max-width: 1000px;
   margin: 0 auto;
@@ -49,10 +45,21 @@ main {
 .game-name {
   font-weight: bold;
   font-size: 16pt;
+  background-color: #79b700;
+  padding: 15px;
+  margin: 0;
+  height: 25%;
 }
 
 button {
   cursor: pointer;
+  background-color: #ffff6e;
+  border: none;
+  border-radius: 2pt;
+}
+
+button:hover {
+  background-color: #99aa00;
 }
 
 /* .js-bgame-controls {
@@ -63,10 +70,10 @@ button {
   position: absolute;
 } */
 
-.js-bgame-name {
+/* .js-bgame-name {
   padding-left: 5px;
   padding-right: 5px;
-}
+} */
 
 .modal {
   background-color: pink;
@@ -77,13 +84,9 @@ button {
   /* border: 2px solid black; */
   height: 225px;
   width: 225px;
-  background-color: yellowgreen;
+  background-color: #cddc39;
   text-align: center;
    border-radius: 2px; 
   font-family: 'Open Sans', sans-serif;
   box-shadow: 0 3px 2px -2px black;
-}
-
-.js-bgame:hover {
-  background-color: pink;
 }
