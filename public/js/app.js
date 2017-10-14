@@ -3,14 +3,14 @@ const GAMES_URL = '/api/board-games';
 function makeBoardGame(id, name, players, plays) {
   return (
     `<div class="js-bgame col" id="${id}">
-      <h3 class="js-bgame-name">${name}</h3>
+      <h3 class="js-bgame-name game-name">${name}</h3>
       <h4 class="js-bgame-players">Players: ${players}</h4>
       <h4 class="js-bgame-plays">Total Plays: ${plays}</h4>
       <div class="bgame-controls">
-        <button class="js-bgame-delete">
+        <button class="js-game-btn span_5_of_12 js-bgame-delete">
           <span class="button-label">delete</span>          
         </button>
-        <button class="js-bgame-add-play">
+        <button class="js-game-btn span_5_of_12 js-bgame-add-play">
           <span class="button-label">Add Play</span>
         </button>
       </div> 
@@ -31,7 +31,7 @@ function getAndDisplayBoardGames() {
     }).get();
     console.log(boardGameElements);
 		$('.game-box').html(boardGameElements); 
-		$('.js-bgame').velocity("transition.swoopIn", { duration: 750 })
+		$('.js-bgame').velocity("transition.swoopIn", { duration: 600, stagger: 100 })
 
   }); 
 
@@ -99,9 +99,10 @@ function handleGameDelete () {
 function handlePlayUpdate () {
   $('body').on('click', '.js-bgame-add-play', (function(e) {
     e.preventDefault();
-    let bgame = $(e.currentTarget);
+		let bgame = $(e.currentTarget);
+		console.log(bgame.closest('.js-bgame').attr('id'));
     updateGame({
-      id: $(e.currentTarget).closest('.js-bgame').attr('id'),
+      id: '59e00847728a32c651863cc7',
       plays: {
         date: Date(),
         players: 2 
