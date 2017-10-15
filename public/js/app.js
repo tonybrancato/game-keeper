@@ -4,8 +4,8 @@ function makeBoardGame(id, name, players, plays) {
   return (
     `<div class="js-bgame col" id="${id}">
       <h3 class="js-bgame-name game-name"><span class="name-text">${name}</span></h3>
-      <h4 class="js-bgame-players">Players: ${players}</h4>
-      <h4 class="js-bgame-plays">Total Plays: ${plays}</h4>
+      <p class="js-bgame-players">Players: ${players}</p>
+      <p class="js-bgame-plays">Total Plays: ${plays}</p>
       <div class="bgame-controls">
 				<button class="js-game-btn span_5_of_12 js-bgame-add-play">
           <span class="button-label">Add Play</span>
@@ -32,6 +32,7 @@ function getAndDisplayBoardGames() {
 }
 
 function addGame(game) {
+	console.log(JSON.stringify(game));
   console.log('Adding game: ' + game);
   $.ajax({
     method: 'POST',
@@ -47,13 +48,13 @@ function addGame(game) {
 }
 
 function updateGame(game) {
-  console.log('updating game with' + game);
+  console.log('updating game with' + JSON.stringify(game));
   console.log(GAMES_URL + '/' + game.id);
   $.ajax({
     method: 'PUT',
     url: GAMES_URL + '/' + game.id,
     data: JSON.stringify(game),
-    success: getAndDisplayBoardGames
+    // success: location.reload()
   });
 }
 
@@ -94,14 +95,14 @@ function handlePlayUpdate () {
   $('body').on('click', '.js-bgame-add-play', (function(e) {
     e.preventDefault();
 		let bgame = $(e.currentTarget);
-		console.log(bgame.closest('.js-bgame').attr('id'));
+		console.log('id for targeted game is ' + bgame.closest('.js-bgame').attr('id'));
     updateGame({
-      id: '59e00847728a32c651863cc7',
+      id: bgame.closest('.js-bgame').attr('id'),
       plays: {
         date: Date(),
-        players: 2 
+        players: '2'
       }
-    })
+    });
   }))
 }
 
