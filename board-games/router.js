@@ -13,6 +13,8 @@ const {BoardGame} = require('../models');
 
 const app = express();
 
+var jsonParser = bodyParser.json();
+
 router.get('/', (req, res) => {
   BoardGame
     .find()
@@ -30,8 +32,9 @@ router.get('/', (req, res) => {
     });
 });
 
-router.get('/:id', (req, res) => {
+router.get('/:id', jsonParser, (req, res) => {
   BoardGame
+  console.log('req.params.id = ' + req.params.id)
     .findById(req.params.id)
     .then(boardGame =>res.json(boardGame.apiRepr()))
     .catch(err => {
@@ -66,18 +69,17 @@ router.post('/', (req, res) => {
     });
 });
 
-router.put('/:id', (req, res) => {
- if (!(req.params.id && req.body.id && req.params.id === req.body.id)) {
+router.put('/:id', jsonParser, (req, res) => {
+ if (req.params.id !== req.body.id) {
    const message = (
      `request path id (${req.params.id}) and request body id
      (${req.body.id}) must match`);
-   console.error(message);
+   console.error(message + '-----req.body is ' + JSON.stringify(req.body));
    res.status(400).json({message: message});
  }
  
  const toUpdate = {};
  const updatableFields = ['plays'];
-
  updatableFields.forEach(field => {
    if (field in req.body) {
      toUpdate[field] = req.body[field];
@@ -85,7 +87,9 @@ router.put('/:id', (req, res) => {
  });
 
  BoardGame
-  .findByIdAndUpdate(req.params.id, {$set: toUpdate})
+  .findByIdAndUpdate(req.params.id, {$set: {toUpdate}})
+  // console.log('LINE 89-----' + req.params.id)
+  // console.log(toUpdate)
   .then(boardGame => res.status(204).end())
   .catch(err => res.status(500).json({message: 'Internal server error'}));
 });
