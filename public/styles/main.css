@@ -8,12 +8,16 @@ font-family: 'Montserrat', sans-serif; */
 
 html {
   /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#e4efc0+22,abbd73+63 */
-  background: #e4efc0; /* Old browsers */
+  background: #e4efc0 no-repeat center center fixed; /* Old browsers */
   background: -moz-linear-gradient(-45deg, #e4efc0 22%, #abbd73 63%); /* FF3.6-15 */
   background: -webkit-linear-gradient(-45deg, #e4efc0 22%,#abbd73 63%); /* Chrome10-25,Safari5.1-6 */
   background: linear-gradient(135deg, #e4efc0 22%,#abbd73 63%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
   filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#e4efc0', endColorstr='#abbd73',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
-  background-repeat: no-repeat;
+  /* background-repeat: no-repeat center center fixed; */
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
   height: 100%; 
 }
 
@@ -31,6 +35,26 @@ header {
 
 input {
   display: block;
+}
+
+.info-box {
+  background-color: #79b700;
+  height: 150px;
+  border-radius: 2pt;
+  border: 10px outset #aeea00;
+  margin: 0 auto;
+}
+
+.game-info {
+  height: 100px;
+  background-color: #ffff6e;
+  width: 23%;
+}
+
+.add-game-btn {
+  height: 100%;
+  width: 100%;
+  background-color: #79b700;
 }
 
 main {
@@ -53,30 +77,57 @@ main {
 
 button {
   cursor: pointer;
+  border: none;
+  border-radius: 4pt;
+}
+
+.js-game-btn {
+  cursor: pointer;
   background-color: #ffff6e;
   border: none;
-  border-radius: 2pt;
+  margin-top: 10px;
 }
 
 button:hover {
   background-color: #99aa00;
 }
 
-/* .js-bgame-controls {
-  position: relative;
+.modal {
+  background-color: #99aa00;
+  text-align: center;
 }
 
-.js-game-btn {
-  position: absolute;
+/* add game form that appears in modal */
+/* #addGameForm {
+  margin: 0 auto;
 } */
 
-/* .js-bgame-name {
-  padding-left: 5px;
-  padding-right: 5px;
-} */
+.modal-input {
+  background-color: #ffff6e;
+  border: none;
+  border-radius: 3pt;
+  margin: 0 auto;
+}
 
-.modal {
-  background-color: pink;
+::-webkit-input-placeholder {
+  opacity: .6;
+}
+::-ms-input-placeholder {
+  opacity: .6;
+}
+::-moz-placeholder {
+  opacity: .6;
+}
+
+
+#addGame {
+  background-color: #cddc39;
+  margin-top: 10px;
+  float: right;
+}
+
+#addGame:hover {
+  background-color: #aeea00;
 }
 
 .js-bgame {
