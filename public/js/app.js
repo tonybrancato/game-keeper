@@ -51,10 +51,11 @@ function updateGame(game) {
   console.log('updating game with' + JSON.stringify(game));
   console.log(GAMES_URL + '/' + game.id);
   $.ajax({
+		// async: true,
     method: 'PUT',
     url: GAMES_URL + '/' + game.id,
     data: JSON.stringify(game),
-    // success: location.reload()
+     success: getAndDisplayBoardGames
   });
 }
 

@@ -69,12 +69,12 @@ router.post('/', (req, res) => {
     });
 });
 
-router.put('/:id', jsonParser, (req, res) => {
+router.put('/:id', (req, res) => {
  if (req.params.id !== req.body.id) {
    const message = (
-     `request path id (${req.params.id}) and request body id
-     (${req.body.id}) must match`);
-   console.error(message + '-----req.body is ' + JSON.stringify(req.body));
+     `*****request path id (${req.params.id}) and request body id
+     (${req.body.id}) must match*****`);
+   console.error(message + '-----req.body is ' + JSON.stringify(req.body.id));
    res.status(400).json({message: message});
  }
  
@@ -86,10 +86,10 @@ router.put('/:id', jsonParser, (req, res) => {
    }
  });
 
+console.log(`req.params.id = ${req.params.id} and req.body.id = ${req.body.id}`)
+
  BoardGame
-  .findByIdAndUpdate(req.params.id, {$set: {toUpdate}})
-  // console.log('LINE 89-----' + req.params.id)
-  // console.log(toUpdate)
+  .findByIdAndUpdate(req.params.id, {$set: {toUpdate}}, console.log(toUpdate))
   .then(boardGame => res.status(204).end())
   .catch(err => res.status(500).json({message: 'Internal server error'}));
 });
