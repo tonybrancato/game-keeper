@@ -1,4 +1,4 @@
-require('dotenv').config();
+// require('dotenv').config();
 const bodyParser = require('body-parser');
 const express = require('express');
 const morgan = require('morgan');
@@ -6,8 +6,8 @@ const mongoose = require('mongoose');
 const passport = require('passport');
 
 
-const {router: usersRouter} = require('./users');
-const {router: authRouter, basicStrategy, jwtStrategy} = require('./auth');
+// const {router: usersRouter} = require('./users');
+// const {router: authRouter, basicStrategy, jwtStrategy} = require('./auth');
 const gamesRouter = require('./board-games/router.js')
 
 // ES6 promises for mongoose
@@ -20,13 +20,13 @@ const app = express();
 app.use(bodyParser.json());
 app.use(morgan('common'));
 app.use(express.static('public'));
-app.use(passport.initialize());
+// app.use(passport.initialize());
 
-passport.use(basicStrategy);
-passport.use(jwtStrategy);
+// passport.use(basicStrategy);
+// passport.use(jwtStrategy);
 
-app.use('/api/users/', usersRouter);
-app.use('/api/auth/', authRouter);
+// app.use('/api/users/', usersRouter);
+// app.use('/api/auth/', authRouter);
 
 // app.get('/', (req, res) => {
 //   res.sendFile(__dirname + '/views/index.html');
