@@ -58,6 +58,7 @@ router.post('/', (req, res) => {
   BoardGame
     .create({
       name: req.body.name,
+      type: req.body.type,
       players: req.body.players,
       genre: req.body.genre,
       plays: req.body.plays})
@@ -89,7 +90,7 @@ router.put('/:id', (req, res) => {
 console.log(`req.params.id = ${req.params.id} and req.body.id = ${req.body.id}`)
 
  BoardGame
-  .findByIdAndUpdate(req.params.id, {$set: {toUpdate}}, console.log(toUpdate))
+  .findByIdAndUpdate(req.params.id, {$push: toUpdate}, console.log(toUpdate))
   .then(boardGame => res.status(204).end())
   .catch(err => res.status(500).json({message: 'Internal server error'}));
 });
