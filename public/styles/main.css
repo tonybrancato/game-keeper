@@ -6,6 +6,10 @@ font-family: 'Montserrat', sans-serif; */
   box-sizing: border-box;  
 }
 
+.hidden {
+  display: none;
+}
+
 html {
   /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#e4efc0+22,abbd73+63 */
   background: #e4efc0 no-repeat center center fixed; /* Old browsers */
@@ -31,9 +35,40 @@ header {
 .game-icon {
   width: 50px;
   height: 50px;
+  cursor: pointer;
 }
 
-input {
+/* Game Type Classes to dynamically show images in each game card */
+.Board {
+  height: 50px;
+  width: 50px;
+  content: url('../imgs/meeple.svg');
+  margin: 0 auto;
+  /* float: right; */
+}
+.Video {
+  height: 50px;
+  width: 50px;
+  content: url('../imgs/console-controller.svg');
+  margin: 0 auto;
+  /* float: right; */
+}
+.Card {
+  height: 50px;
+  width: 50px;
+  content: url('../imgs/poker-hand.svg');
+  margin: 0 auto;
+  /* float: right; */
+}
+.TTRPG {
+  height: 50px;
+  width: 50px;
+  content: url('../imgs/dice-twenty.svg'); 
+  margin: 0 auto;
+  /* float: right; */
+}
+
+select, input {
   display: block;
 }
 
