@@ -1,9 +1,11 @@
 const GAMES_URL = '/api/board-games';
 
-function makeBoardGame(id, name, players, plays) {
+function makeBoardGame(id, name, type, players, plays) {
+	console.log(id, name, type, players, plays);
   return (
     `<div class="js-bgame col" id="${id}">
-      <h3 class="js-bgame-name game-name"><span class="name-text">${name}</span></h3>
+			<h3 class="js-bgame-name game-name"><span class="name-text">${name}</span></h3>
+			<div class="${type}"></div>
       <p class="js-bgame-players">Players: ${players}</p>
       <p class="js-bgame-plays">Total Plays: ${plays}</p>
       <div class="bgame-controls">
@@ -24,7 +26,7 @@ function getAndDisplayBoardGames() {
   $.getJSON(GAMES_URL, function(result) {
   	let element = result.boardGames;
     let boardGameElements = $(element).map(function(i) {
-     return makeBoardGame(element[i].id, element[i].name, element[i].players, element[i].plays);
+     return makeBoardGame(element[i].id, element[i].name, element[i].type, element[i].players, element[i].plays);
     }).get();
 		$('.game-box').html(boardGameElements); 
 		$('.js-bgame').velocity("transition.swoopIn", { duration: 600, stagger: 100 })
@@ -73,12 +75,13 @@ function handleGameAdd () {
     e.preventDefault();
     const bgame = $(e.currentTarget);
     addGame({
-      name: bgame.find('#game-name').val(),
+			name: bgame.find('#game-name').val(),
+			type: bgame.find('#gameType').val(),
       genre: bgame.find('#genre').val(),
       players: {
         min: bgame.find('#numPlayersMin').val(),
         max: bgame.find('#numPlayersMax').val(),
-      }
+			}
     });
   });
 }
@@ -107,10 +110,38 @@ function handlePlayUpdate () {
   }))
 }
 
+// filtering games based on icons at the top
+function handleGameFilter() {
+	$('html').on('click', '#meeple', (function(e) {
+		$('.Board').each(function(){
+			$(this).parent().toggle();
+		});
+	}));
+
+	$('html').on('click', '#d20', (function(e) {
+		$('.TTRPG').each(function(){
+			$(this).parent().toggle();
+		});
+	}));
+
+	$('html').on('click', '#cards', (function(e) {
+		$('.Card').each(function(){
+			$(this).parent().toggle();
+		});
+	}));
+
+	$('html').on('click', '#videoGame', (function(e) {
+		$('.Video').each(function(){
+			$(this).parent().toggle();
+		});
+	}));
+}
+
 // ready function, for page load
 $(function() {
   getAndDisplayBoardGames();
   handleGameAdd();
   handleGameDelete();
-  handlePlayUpdate();
+	// handlePlayUpdate();
+	handleGameFilter();
 });
