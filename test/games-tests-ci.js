@@ -14,6 +14,7 @@ chai.use(chaiHttp);
 function generateBoardGameData() {
   return {
     name: faker.commerce.productName(),
+    type: faker.commerce.productMaterial(),
     genre: faker.commerce.color()
  }
 }
