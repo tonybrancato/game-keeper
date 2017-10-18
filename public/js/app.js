@@ -6,15 +6,13 @@ function makeBoardGame(id, name, type, players, plays) {
     `<div class="js-bgame col" id="${id}">
 			<h3 class="js-bgame-name game-name"><span class="name-text">${name}</span></h3>
 			<div class="${type}"></div>
-      <p class="js-bgame-players">Players: ${players}</p>
-      <p class="js-bgame-plays">Total Plays: ${plays}</p>
+      <div class="js-bgame-info">
+        <p class="js-bgame-players">Players: ${players}</p>
+        <p class="js-bgame-plays">Total Plays: ${plays}</p>
+      </div>
       <div class="bgame-controls">
-				<button class="js-game-btn span_5_of_12 js-bgame-add-play">
-          <span class="button-label">Add Play</span>
-        </button>
-				<button class="js-game-btn span_5_of_12 js-bgame-delete">
-          <span class="button-label">Delete</span>          
-        </button>
+				<a href="#updatePlayForm" rel="modal:open" class="link-btn span_5_of_12 js-new-play">New Play</a>          
+				<a href="#" class="link-btn span_5_of_12 js-bgame-delete">Delete</a>          
       </div> 
     </div>`
   );
@@ -38,7 +36,7 @@ function addGame(game) {
   console.log('Adding game: ' + game);
   $.ajax({
     method: 'POST',
-    url: GAMES_URL,
+		url: GAMES_URL,
     data: JSON.stringify(game),
     success: function(data) {
       $('.modal-input').val("");
@@ -53,11 +51,36 @@ function updateGame(game) {
   console.log('updating game with' + JSON.stringify(game));
   console.log(GAMES_URL + '/' + game.id);
   $.ajax({
-		// async: true,
+		async: true,
     method: 'PUT',
     url: GAMES_URL + '/' + game.id,
+		headers: {
+			contentType: 'application/json'
+		},    
     data: JSON.stringify(game),
      success: getAndDisplayBoardGames
+  });
+}
+// can I log the id of the game to the console?
+function handleNewPlay (e) {
+  $('body').on('click', '.js-new-play', (function(e) {
+    let foo = $(e.currentTarget).closest('.js-bgame').attr('id');
+   $('#updatePlayForm').find('input[type=hidden]').val(`${foo}`);
+  }));
+}
+
+function handleAddPlay () {
+  $('#updatePlayForm').submit(function(e) {
+    e.preventDefault();
+		const bgame = $(e.currentTarget);
+		console.log((bgame).find('input[type=hidden]').val());
+    updateGame({
+      id: bgame.find('input[type=hidden]').val(),
+      plays: {
+        date: Date(),
+        players: bgame.find('#numGamePlayers').val()
+      }
+    });
   });
 }
 
@@ -86,53 +109,48 @@ function handleGameAdd () {
   });
 }
 
-function handleGameDelete () {
-  $('body').on('click', '.js-bgame-delete', (function(e) {
-    e.preventDefault();
-		deleteGame($(e.currentTarget).closest('.js-bgame').attr('id'),
-		$(this).velocity("transition.swoopOut", { duration: 750 })
-);
-  }));
-}
+// function displayLastPlayedGame () {
+	
+// }
 
-function handlePlayUpdate () {
-  $('body').on('click', '.js-bgame-add-play', (function(e) {
-    e.preventDefault();
-		let bgame = $(e.currentTarget);
-		console.log('id for targeted game is ' + bgame.closest('.js-bgame').attr('id'));
-    updateGame({
-      id: bgame.closest('.js-bgame').attr('id'),
-      plays: {
-        date: Date(),
-        players: '2'
-      }
-    });
-  }))
-}
+// function handleGameDelete () {
+//   $('body').on('click', '.js-bgame-delete', (function(e) {
+//     e.preventDefault();
+// 		deleteGame($(e.currentTarget).closest('.js-bgame').attr('id'),
+// 		$(this).velocity("transition.swoopOut", { duration: 750 })
+// );
+//   }));
+// }
+
+
 
 // filtering games based on icons at the top
 function handleGameFilter() {
-	$('html').on('click', '#meeple', (function(e) {
+	$('header').on('click', '#meeple', (function(e) {
 		$('.Board').each(function(){
-			$(this).parent().toggle();
+      $(this).parent().toggle();
+      $('#meeple').toggleClass('hidden');
 		});
 	}));
 
 	$('html').on('click', '#d20', (function(e) {
 		$('.TTRPG').each(function(){
-			$(this).parent().toggle();
+      $(this).parent().toggle();
+      $('#d20').toggleClass('hidden');
 		});
 	}));
 
 	$('html').on('click', '#cards', (function(e) {
 		$('.Card').each(function(){
-			$(this).parent().toggle();
+      $(this).parent().toggle();
+      $('#cards').toggleClass('hidden');
 		});
 	}));
 
 	$('html').on('click', '#videoGame', (function(e) {
 		$('.Video').each(function(){
-			$(this).parent().toggle();
+      $(this).parent().toggle();
+      $('#videoGame').toggleClass('hidden');
 		});
 	}));
 }
@@ -141,7 +159,8 @@ function handleGameFilter() {
 $(function() {
   getAndDisplayBoardGames();
   handleGameAdd();
-  handleGameDelete();
-	// handlePlayUpdate();
-	handleGameFilter();
+  // handleGameDelete();
+  handleAddPlay();
+  handleGameFilter();
+  handleNewPlay();
 });
