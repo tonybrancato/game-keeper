@@ -70,7 +70,7 @@ router.post('/', (req, res) => {
     });
 });
 
-router.put('/:id', (req, res) => {
+router.put('/:id', bodyParser, (req, res) => {
  if (req.params.id !== req.body.id) {
    const message = (
      `*****request path id (${req.params.id}) and request body id

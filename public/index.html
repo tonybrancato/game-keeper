@@ -30,19 +30,16 @@
   <header>
     <h1 class="banner" role="banner">GameKeeper</h1>
     <div class="icons">
-    <img class="game-icon" id="meeple" src="./imgs/meeple.svg">
-    <img class="game-icon" id="d20" src="./imgs/dice-twenty.svg">
-    <img class="game-icon" id="cards" src="./imgs/poker-hand.svg">
-    <img class="game-icon" id="videoGame" src="./imgs/console-controller.svg"></div>
-    <div><a href="#addGameForm" rel="modal:open">Add Game</a></div>
+      <img class="game-icon" id="meeple" src="./imgs/meeple.svg">
+      <img class="game-icon" id="d20" src="./imgs/dice-twenty.svg">
+      <img class="game-icon" id="cards" src="./imgs/poker-hand.svg">
+      <img class="game-icon" id="videoGame" src="./imgs/console-controller.svg">
+    </div>
+    <div><a class="link-btn add-game-btn" href="#addGameForm" rel="modal:open">Add Game</a></div>
   </header>
 
   <body>
-    <div class="info-box span_9_of_12">
-      <div class="games-info-box"> 
-        
-      </div>
-    </div>
+
     <div id="addNewGame" style="display:none;">
       <form id="addGameForm" class="modal">
         <label for="game-name">Game Name</label>
@@ -65,8 +62,11 @@
     </div>  
     <div id="updatePlay" style="display:none;">
       <form id="updatePlayForm" class="modal">
-        <label for="gamePlayers">How many players were there?</label>
-        <input id="addPlayers" class="modal-input" name="players">
+        <input type="hidden" value="">
+        <label for="numGamePlayers">How many players were there?</label>
+        <input id="numGamePlayers" class="modal-input" name="numGamePlayers" maxlength="2">
+        <!-- How long was the game? - 2 select boxes, onne = hours, one = minutes -->
+        <button type="submit" id="addPlay">Add Play</button>
       </form> 
     </div>
     <main>
