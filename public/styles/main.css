@@ -84,14 +84,6 @@ select, input {
   display: block;
 }
 
-.info-box {
-  background-color: #79b700;
-  height: 150px;
-  border-radius: 2pt;
-  border: 10px outset #aeea00;
-  margin: 0 auto;
-}
-
 .game-info {
   height: 100px;
   background-color: #ffff6e;
