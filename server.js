@@ -1,6 +1,6 @@
 // require('dotenv').config();
-const bodyParser = require('body-parser');
 const express = require('express');
+const bodyParser = require('body-parser');
 const morgan = require('morgan');
 const mongoose = require('mongoose');
 const passport = require('passport');
@@ -18,6 +18,7 @@ const {BoardGame} = require('./models');
 
 const app = express();
 app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: false }));
 app.use(morgan('common'));
 app.use(express.static('public'));
 // app.use(passport.initialize());

@@ -1,9 +1,11 @@
-const bodyParser = require('body-parser');
 const express = require('express');
+const app = express();
+const router = express.Router();
+const bodyParser = require('body-parser');
 const morgan = require('morgan');
 const mongoose = require('mongoose');
 const passport = require('passport');
-const router = express.Router();
+
 
 // ES6 promises for mongoose
 mongoose.Promise = global.Promise;
@@ -11,7 +13,6 @@ mongoose.Promise = global.Promise;
 const {PORT, DATABASE_URL} = require('../config');
 const {BoardGame} = require('../models');
 
-const app = express();
 
 var jsonParser = bodyParser.json();
 
@@ -32,7 +33,7 @@ router.get('/', (req, res) => {
     });
 });
 
-router.get('/:id', jsonParser, (req, res) => {
+router.get('/:id', bodyParser, (req, res) => {
   BoardGame
   console.log('req.params.id = ' + req.params.id)
     .findById(req.params.id)
@@ -70,7 +71,7 @@ router.post('/', (req, res) => {
     });
 });
 
-router.put('/:id', bodyParser, (req, res) => {
+router.put('/:id', jsonParser, (req, res) => {
  if (req.params.id !== req.body.id) {
    const message = (
      `*****request path id (${req.params.id}) and request body id

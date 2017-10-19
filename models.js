@@ -10,7 +10,7 @@ const boardGameSchema = mongoose.Schema({
   },
   genre: {type: String, required: true},
   plays: [{
-    date: Date,
+    date: String,
     players: Number,
   }]
 });

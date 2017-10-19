@@ -50,18 +50,22 @@ function addGame(game) {
 function updateGame(game) {
   console.log('updating game with' + JSON.stringify(game));
   console.log(GAMES_URL + '/' + game.id);
+
   $.ajax({
-		async: true,
-    method: 'PUT',
+    async: true,
+    crossDomain: true,
     url: GAMES_URL + '/' + game.id,
-		headers: {
-			contentType: 'application/json'
-		},    
+    method: 'PUT',
+   	headers: {
+			contentType: 'application/json',
+    },    
+    processData: false,
     data: JSON.stringify(game),
-     success: getAndDisplayBoardGames
+    success: getAndDisplayBoardGames()
   });
 }
-// can I log the id of the game to the console?
+
+// retrieves the game's id on clicking
 function handleNewPlay (e) {
   $('body').on('click', '.js-new-play', (function(e) {
     let foo = $(e.currentTarget).closest('.js-bgame').attr('id');
@@ -113,14 +117,14 @@ function handleGameAdd () {
 	
 // }
 
-// function handleGameDelete () {
-//   $('body').on('click', '.js-bgame-delete', (function(e) {
-//     e.preventDefault();
-// 		deleteGame($(e.currentTarget).closest('.js-bgame').attr('id'),
-// 		$(this).velocity("transition.swoopOut", { duration: 750 })
-// );
-//   }));
-// }
+function handleGameDelete () {
+  $('body').on('click', '.js-bgame-delete', (function(e) {
+    e.preventDefault();
+		deleteGame($(e.currentTarget).closest('.js-bgame').attr('id'),
+		$(this).velocity("transition.swoopOut", { duration: 750 })
+);
+  }));
+}
 
 
 
@@ -159,7 +163,7 @@ function handleGameFilter() {
 $(function() {
   getAndDisplayBoardGames();
   handleGameAdd();
-  // handleGameDelete();
+  handleGameDelete();
   handleAddPlay();
   handleGameFilter();
   handleNewPlay();
