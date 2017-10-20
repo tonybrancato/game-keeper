@@ -52,17 +52,18 @@ function updateGame(game) {
   console.log(GAMES_URL + '/' + game.id);
 
   $.ajax({
-    async: true,
-    crossDomain: true,
-    url: GAMES_URL + '/' + game.id,
-    method: 'PUT',
-   	headers: {
-			contentType: 'application/json',
-    },    
-    processData: false,
-    data: JSON.stringify(game),
-    success: getAndDisplayBoardGames()
+    "async": true,
+    "crossDomain": true,
+    "url": GAMES_URL + '/' + game.id,
+    "method": "PUT",
+   	"headers": {
+			"content-type": "application/json"
+    },
+    "processData": false,
+    "data": JSON.stringify(game),
+    "success": location.reload(), 
   });
+
 }
 
 // retrieves the game's id on clicking
@@ -77,7 +78,6 @@ function handleAddPlay () {
   $('#updatePlayForm').submit(function(e) {
     e.preventDefault();
 		const bgame = $(e.currentTarget);
-		console.log((bgame).find('input[type=hidden]').val());
     updateGame({
       id: bgame.find('input[type=hidden]').val(),
       plays: {
