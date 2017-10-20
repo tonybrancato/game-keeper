@@ -49,6 +49,10 @@ p {
   margin: 10px;
 }
 
+.js-bgame-plays {
+  margin-bottom: 20px;
+}
+
 /* Game Type Classes to dynamically show images in each game card */
 .Board {
   height: 50px;
@@ -56,28 +60,27 @@ p {
   content: url('../imgs/meeple.svg');
   margin: 0 auto;
   margin-top: 5px;
-  /* float: right; */
 }
 .Video {
   height: 50px;
   width: 50px;
   content: url('../imgs/console-controller.svg');
   margin: 0 auto;
-  /* float: right; */
+  margin-top: 5px;  
 }
 .Card {
   height: 50px;
   width: 50px;
   content: url('../imgs/poker-hand.svg');
   margin: 0 auto;
-  /* float: right; */
+  margin-top: 5px;  
 }
 .TTRPG {
   height: 50px;
   width: 50px;
   content: url('../imgs/dice-twenty.svg'); 
   margin: 0 auto;
-  /* float: right; */
+  margin-top: 5px;  
 }
 
 select, input {
@@ -93,8 +96,6 @@ select, input {
 .link-btn {
   background: #ffff6e;
   padding: 8px 20px;
-  /* display: block; */
-  /* margin: 10px 0; */
   text-align: center;
   text-transform: uppercase;
   letter-spacing: 1px;
@@ -112,6 +113,7 @@ select, input {
 
 .add-game-btn {
   font-size: 20px;
+  border: 1px solid #79b700;
 }
 
 .add-game-btn:hover {
@@ -163,11 +165,6 @@ button:hover {
   text-align: center;
 }
 
-/* add game form that appears in modal */
-/* #addGameForm {
-  margin: 0 auto;
-} */
-
 .modal-input {
   background-color: #ffff6e;
   border: none;
@@ -197,7 +194,6 @@ button:hover {
 
 .js-bgame {
   display: inline-block;
-  /* border: 2px solid black; */
   height: 225px;
   width: 225px;
   background-color: #cddc39;
