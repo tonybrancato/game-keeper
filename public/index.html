@@ -36,20 +36,20 @@
 
   <!---Banner/Title-->
   
-  <header>
+  <header role="heading">
     <h1 class="banner" role="banner">GameKeeper</h1>
-    <div class="icons">
+    <section class="icons">
       <img class="game-icon" id="meeple" src="./imgs/meeple.svg">
       <img class="game-icon" id="d20" src="./imgs/dice-twenty.svg">
       <img class="game-icon" id="cards" src="./imgs/poker-hand.svg">
       <img class="game-icon" id="videoGame" src="./imgs/console-controller.svg">
-    </div>
+    </section>
     <div><a class="link-btn add-game-btn" href="#addGameForm" rel="modal:open">Add Game</a></div>
   </header>
 
   <body>
 
-    <div id="addNewGame" style="display:none;">
+    <section role="" id="addNewGame" style="display:none;">
       <form id="addGameForm" class="modal">
         <label for="game-name">Game Name</label>
         <input id="game-name" class="modal-input" name="game-name" maxlength="20" type="text" placeholder="e.g., Monopoly">
@@ -68,7 +68,7 @@
         <input id="genre" class="modal-input" name="genre" type="text" maxlength="20" placeholder="e.g., Strategy">
         <button type="submit" id="addGame">Add Game</button>
       </form>
-    </div>  
+    </section>  
     <div id="updatePlay" style="display:none;">
       <form id="updatePlayForm" class="modal">
         <input type="hidden" value="">
@@ -78,7 +78,9 @@
         <button type="submit" id="addPlay">Add Play</button>
       </form> 
     </div>
-    <main>
+
+    <!-- javascript created game cards will be put in here -->
+    <main role="main">
       <div class="game-box section group">
         
       </div>
