@@ -107,53 +107,53 @@ describe('GameKeeper API resource', function() {
     });
   
   // PUT
-  it('should update items on PUT', function() {
+  // // it('should update items on PUT', function() {
 
-    const updateData = {
-      plays: {
-        date: faker.date.past,
-        players: faker.random.number({min:1, max:99})
-      }
-    };
+  // //   const updateData = {
+  // //     plays: {
+  // //       date: faker.date.past,
+  // //       players: faker.random.number({min:1, max:99})
+  // //     }
+  // //   };
 
-    return chai.request(app)
-      // first have to get so we have an idea of object to update
-      .get('/api/board-games')
-      .then(function(res) {
-        updateData.id = res.body.boardGames.id;
-        console.log(updateData.id);
-        // this will return a promise whose value will be the response
-        // object, which we can inspect in the next `then` back. Note
-        // that we could have used a nested callback here instead of
-        // returning a promise and chaining with `then`, but we find
-        // this approach cleaner and easier to read and reason about.
-        return chai.request(app)
-          .put(`/api/board-games/${updateData.id}`)
-          .send(updateData);
-      })
-      // prove that the PUT request has right status code
-      // and returns updated item
-      .then(function(res) {
-        res.should.have.status(200);
-        res.should.be.json;
-        res.body.should.be.a('object');
-        res.body.should.deep.equal(updateData);
-      });
-  });
-});
-
-  // DELETE 
-  // it('should delete items on DELETE', function() {
-  //   return chai.request(app)
-  //     // first have to get so we have an `id` of item
-  //     // to delete
-  //     .get('/api/board-games')
-  //     .then(function(res) {
-  //       return chai.request(app)
-  //         .delete(`/api/board-games/${res.body.id}`);
-  //     })
-  //     .then(function(res) {
-  //       res.should.have.status(204);
+  // //   return chai.request(app)
+  // //     // first have to get so we have an idea of object to update
+  // //     .get('/api/board-games')
+  // //     .then(function(res) {
+  // //       updateData.id = res.body.id;
+  // //       console.log(`updateData.id === ${JSON.stringify(res)}`);
+  // //       // this will return a promise whose value will be the response
+  // //       // object, which we can inspect in the next `then` back. Note
+  // //       // that we could have used a nested callback here instead of
+  // //       // returning a promise and chaining with `then`, but we find
+  // //       // this approach cleaner and easier to read and reason about.
+  // //       return chai.request(app)
+  // //         .put(`/api/board-games/${updateData.id}`)
+  // //         .send(updateData);
+  // //     })
+  // //     // prove that the PUT request has right status code
+  // //     // and returns updated item
+  // //     .then(function(res) {
+  // //       res.should.have.status(200);
+  // //       res.should.be.json;
+  // //       res.body.should.be.a('object');
+  // //       res.body.should.deep.equal(updateData);
   //     });
   // });
 
+
+  // DELETE 
+  it('should delete items on DELETE', function() {
+    return chai.request(app)
+      // first have to get so we have an `id` of item
+      // to delete
+      .get('/api/board-games')
+      .then(function(res) {
+        return chai.request(app)
+          .delete(`/api/board-games/${res.body.boardGames[0].id}`);
+      })
+      .then(function(res) {
+        res.should.have.status(204);
+      });
+  });
+});
