@@ -92,6 +92,7 @@ button:hover {
   font-family: 'Open Sans', sans-serif;
   box-shadow: 0 3px 2px -2px black;
   margin-bottom: 20px;
+  /* min-width: 220px; */
 }
 
 @media only screen and (max-width: 640px) {
@@ -102,6 +103,17 @@ button:hover {
 
   .col-3 {
     float: none;
+  }
+}
+
+@media only screen and (max-width: 999px) {
+  .js-bgame {
+    margin: 10px 0 25px;
+    width: 240px;
+  }
+
+  .col-3 {
+    width: 33.33%;
   }
 }
 
@@ -172,7 +184,6 @@ button:hover {
   background-color: #ffff6e;
   width: 23%;
 }
-
 
 .bgame-controls {
   padding-bottom: 15px;
