@@ -10,13 +10,21 @@ font-family: 'Montserrat', sans-serif; */
   opacity: .3;
 }
 
+.bgame-controls {
+  padding-bottom: 15px;
+}
+
+a.link-btn {
+  display: inline-block;
+}
+
 html {
   /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#e4efc0+22,abbd73+63 */
   background: #e4efc0 no-repeat center center fixed; /* Old browsers */
   background: -moz-linear-gradient(-45deg, #e4efc0 22%, #abbd73 63%); /* FF3.6-15 */
   background: -webkit-linear-gradient(-45deg, #e4efc0 22%,#abbd73 63%); /* Chrome10-25,Safari5.1-6 */
   background: linear-gradient(135deg, #e4efc0 22%,#abbd73 63%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
-  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#e4efc0', endColorstr='#abbd73',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
+  /* filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#e4efc0', endColorstr='#abbd73',GradientType=1 ); IE6-9 fallback on horizontal gradient */
   /* background-repeat: no-repeat center center fixed; */
   -webkit-background-size: cover;
   -moz-background-size: cover;
@@ -96,7 +104,6 @@ select, input {
 .link-btn {
   background: #ffff6e;
   padding: 8px 20px;
-  text-align: center;
   text-transform: uppercase;
   letter-spacing: 1px;
   font-size: 13px;
@@ -122,7 +129,7 @@ select, input {
 
 main {
   max-width: 1000px;
-  margin: 0 auto;
+  text-align: center;  
 }
 
 .icons {
@@ -194,10 +201,10 @@ button:hover {
 
 .js-bgame {
   display: inline-block;
-  height: 225px;
-  width: 225px;
+  /* height: 225px; */
+  /* width: 100%; */
+  max-width: 220px;
   background-color: #cddc39;
-  text-align: center;
   border-radius: 4px; 
   font-family: 'Open Sans', sans-serif;
   box-shadow: 0 3px 2px -2px black;
@@ -210,3 +217,15 @@ h3 {
   font-weight: 700;
 }
 
+/* @media only screen and (min-width: 640px) {
+
+  .js-bgame {
+    float: none;
+  }
+
+} */
+
+/* media query to remove float:left */
+/* @media only screen and (max-width:640px) {
+  float: none;
+} */
