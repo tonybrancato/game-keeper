@@ -6,31 +6,8 @@ font-family: 'Montserrat', sans-serif; */
   box-sizing: border-box;  
 }
 
-.hidden {
-  opacity: .3;
-}
-
-.bgame-controls {
-  padding-bottom: 15px;
-}
-
-a.link-btn {
-  display: inline-block;
-}
-
 html {
-  /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#e4efc0+22,abbd73+63 */
-  background: #e4efc0 no-repeat center center fixed; /* Old browsers */
-  background: -moz-linear-gradient(-45deg, #e4efc0 22%, #abbd73 63%); /* FF3.6-15 */
-  background: -webkit-linear-gradient(-45deg, #e4efc0 22%,#abbd73 63%); /* Chrome10-25,Safari5.1-6 */
-  background: linear-gradient(135deg, #e4efc0 22%,#abbd73 63%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
-  /* filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#e4efc0', endColorstr='#abbd73',GradientType=1 ); IE6-9 fallback on horizontal gradient */
-  /* background-repeat: no-repeat center center fixed; */
-  -webkit-background-size: cover;
-  -moz-background-size: cover;
-  -o-background-size: cover;
-  background-size: cover;
-  height: 100%; 
+  background: #ccdf8e;
 }
 
 header {
@@ -40,65 +17,40 @@ header {
   max-width: 1000px;
 }
 
+main {
+  text-align: center;  
+}
+
 h1 {
   font-size: 32pt;
   letter-spacing: 4px;
 }
 
-.game-icon {
-  width: 60px;
-  height: 60px;
-  cursor: pointer;
-  margin-left: 3px;
-  margin-right: 3px;
+h3 {
+  border-top-left-radius: 3pt;
+  border-top-right-radius: 3pt;
 }
 
 p {
   margin: 10px;
 }
 
-.js-bgame-plays {
-  margin-bottom: 20px;
-}
-
-/* Game Type Classes to dynamically show images in each game card */
-.Board {
-  height: 50px;
-  width: 50px;
-  content: url('../imgs/meeple.svg');
-  margin: 0 auto;
-  margin-top: 5px;
-}
-.Video {
-  height: 50px;
-  width: 50px;
-  content: url('../imgs/console-controller.svg');
-  margin: 0 auto;
-  margin-top: 5px;  
-}
-.Card {
-  height: 50px;
-  width: 50px;
-  content: url('../imgs/poker-hand.svg');
-  margin: 0 auto;
-  margin-top: 5px;  
-}
-.TTRPG {
-  height: 50px;
-  width: 50px;
-  content: url('../imgs/dice-twenty.svg'); 
-  margin: 0 auto;
-  margin-top: 5px;  
+a.link-btn {
+  display: inline-block;
 }
 
 select, input {
   display: block;
 }
 
-.game-info {
-  height: 100px;
-  background-color: #ffff6e;
-  width: 23%;
+button {
+  cursor: pointer;
+  border: none;
+  border-radius: 4pt;
+}
+
+button:hover {
+  background-color: #99aa00;
 }
 
 .link-btn {
@@ -113,11 +65,6 @@ select, input {
   color: black;
 }
 
-.link-btn:hover {
-  background: #76ff03;
-  box-shadow: 0 3px 2px -2px black;
-}
-
 .add-game-btn {
   font-size: 20px;
   border: 1px solid #79b700;
@@ -127,18 +74,88 @@ select, input {
   background: #aeea00;
 }
 
-main {
-  max-width: 1000px;
-  text-align: center;  
+.link-btn:hover {
+  background: #76ff03;
+  box-shadow: 0 3px 2px -2px black;
+}
+
+/* javaScript generated game card */
+
+.game-box {
+  display: inline-block;
+  margin-top: 15px;
+}
+
+.js-bgame {
+  background-color: #cddc39;
+  border-radius: 4px; 
+  font-family: 'Open Sans', sans-serif;
+  box-shadow: 0 3px 2px -2px black;
+  margin-bottom: 20px;
+}
+
+@media only screen and (max-width: 640px) {
+  .js-bgame {
+    margin: 10px 0 25px;
+    width: 240px;
+  }
+
+  .col-3 {
+    float: none;
+  }
+}
+
+.hidden {
+  opacity: .3;
+}
+
+.game-icon {
+  width: 60px;
+  height: 60px;
+  cursor: pointer;
+  margin-left: 3px;
+  margin-right: 3px;
+}
+
+.js-bgame-plays {
+  margin-bottom: 20px;
 }
 
 .icons {
   margin-bottom: 15px;
 }
 
-.game-box {
-  display: inline-block;
-  margin-top: 15px;
+/* Game Type Classes to dynamically show images in each game card */
+.Board {
+  height: 50px;
+  width: 50px;
+  content: url('../imgs/meeple.svg');
+  margin: 0 auto;
+  margin-top: 5px;
+}
+
+.Video {
+  height: 50px;
+  width: 50px;
+  content: url('../imgs/console-controller.svg');
+  margin: 0 auto;
+  margin-top: 5px;  
+}
+
+.Card {
+  height: 50px;
+  width: 50px;
+  content: url('../imgs/poker-hand.svg');
+  margin: 0 auto;
+  margin-top: 5px;  
+}
+
+.TTRPG {
+  height: 50px;
+  width: 50px;
+  content: url('../imgs/dice-twenty.svg'); 
+  margin: 0 auto;
+  margin-top: 5px;  
 }
 
 .game-name {
@@ -150,22 +167,18 @@ main {
   height: 25%;
 }
 
-button {
-  cursor: pointer;
-  border: none;
-  border-radius: 4pt;
-}
-
-.js-game-btn {
-  cursor: pointer;
+.game-info {
+  height: 100px;
   background-color: #ffff6e;
-  border: none;
-  margin-top: 10px;
+  width: 23%;
 }
 
-button:hover {
-  background-color: #99aa00;
+
+.bgame-controls {
+  padding-bottom: 15px;
 }
+
+/* jQuery Modal overridden styles */
 
 .modal {
   background-color: #99aa00;
@@ -198,34 +211,3 @@ button:hover {
 #addGame:hover {
   background-color: #aeea00;
 }
-
-.js-bgame {
-  display: inline-block;
-  /* height: 225px; */
-  /* width: 100%; */
-  max-width: 220px;
-  background-color: #cddc39;
-  border-radius: 4px; 
-  font-family: 'Open Sans', sans-serif;
-  box-shadow: 0 3px 2px -2px black;
-}
-
-h3 {
-  border-top-left-radius: 3pt;
-  border-top-right-radius: 3pt;
-  font-size: 18pt;
-  font-weight: 700;
-}
-
-/* @media only screen and (min-width: 640px) {
-
-  .js-bgame {
-    float: none;
-  }
-
-} */
-
-/* media query to remove float:left */
-/* @media only screen and (max-width:640px) {
-  float: none;
-} */
