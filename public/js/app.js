@@ -3,7 +3,7 @@ const GAMES_URL = '/api/board-games';
 function makeBoardGame(id, name, type, players, plays) {
 	console.log(id, name, type, players, plays);
   return (
-    `<div class="js-bgame col" id="${id}">
+    `<div class="js-bgame col-4" id="${id}">
 			<h3 class="js-bgame-name game-name"><span class="name-text">${name}</span></h3>
 			<div class="${type}"></div>
       <div class="js-bgame-info">
@@ -11,8 +11,8 @@ function makeBoardGame(id, name, type, players, plays) {
         <p class="js-bgame-plays">Total Plays: ${plays}</p>
       </div>
       <div class="bgame-controls">
-				<a href="#updatePlayForm" rel="modal:open" class="link-btn span_5_of_12 js-new-play">New Play</a>          
-				<a href="#" class="link-btn span_5_of_12 js-bgame-delete">Delete</a>          
+				<a href="#updatePlayForm" rel="modal:open" class="link-btn js-new-play">New Play</a>          
+				<a href="#" class="link-btn js-bgame-delete">Delete</a>          
       </div> 
     </div>`
   );
