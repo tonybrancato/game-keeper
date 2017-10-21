@@ -6,9 +6,6 @@ font-family: 'Montserrat', sans-serif; */
   box-sizing: border-box;  
 }
 
-html {
-}
-
 header {
   font-family: 'Montserrat', sans-serif;
   margin: 0 auto;
@@ -89,7 +86,6 @@ button:hover {
 }
 
 /* javaScript generated game card */
-
 .game-box {
   display: inline-block;
   margin-top: 15px;
@@ -101,7 +97,6 @@ button:hover {
   font-family: 'Open Sans', sans-serif;
   box-shadow: 0 3px 2px -2px black;
   margin-bottom: 20px;
-  /* min-width: 220px; */
 }
 
 @media only screen and (max-width: 640px) {
@@ -147,6 +142,7 @@ button:hover {
   margin-bottom: 20px;
 }
 
+/* icons wrapper */
 .icons {
   margin-bottom: 15px;
 }
