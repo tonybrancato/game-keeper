@@ -15,7 +15,6 @@ function getAndDisplayBoardGames() {
 
 // ADD GAMES
 function makeBoardGame(id, name, type, players, plays) {
-	console.log(id, name, type, players, plays);
   return (
     `<div class="col-3">
       <div class="js-bgame" id="${id}">
@@ -51,8 +50,6 @@ function handleGameAdd () {
 }
 
 function addGame(game) {
-	console.log(JSON.stringify(game));
-  console.log('Adding game: ' + game);
   $.ajax({
     method: 'POST',
 		url: GAMES_URL,
@@ -68,8 +65,6 @@ function addGame(game) {
 
 // UPDATE GAMES
 function updateGame(game) {
-  console.log('updating game with' + JSON.stringify(game));
-  console.log(GAMES_URL + '/' + game.id);
 
   $.ajax({
     "async": true,
@@ -120,7 +115,6 @@ function findGameToDelete (e) {
 }
 
 function deleteGame(gameId) {
-  console.log(`deleting ${gameId} from database`)
   $.ajax({
     method: 'DELETE',
     url: GAMES_URL + '/' + gameId,
