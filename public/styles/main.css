@@ -9,12 +9,12 @@ font-family: 'Montserrat', sans-serif; */
 header {
   font-family: 'Montserrat', sans-serif;
   margin: 0 auto;
+  background: #ccdf8e;    
   text-align: center;
   max-width: 1000px;
   position: sticky;
   top: 0;
   z-index: 1;
-  background: #ccdf8e;  
 }
 
 body {
@@ -25,6 +25,10 @@ body {
 
 main {
   text-align: center;  
+}
+
+form {
+  font-family: 'Open Sans', sans-serif;
 }
 
 h1 {
@@ -45,6 +49,19 @@ a.link-btn {
   display: inline-block;
 }
 
+nav {
+  height: 40px;
+  width: 40px;
+}
+
+img.help {
+  position: absolute;
+  top: 5px;
+  right: 10px;
+  height: 30px;
+  width: 30px;
+}
+
 select, input {
   display: block;
 }
@@ -52,12 +69,34 @@ select, input {
 button {
   cursor: pointer;
   border: none;
+  text-transform: uppercase;
+  padding: 8px 20px;
+  margin: 20px 0 20px;
+  letter-spacing: 1px;  
+  background: #ffff6e;
   border-radius: 4pt;
 }
 
 button:hover {
-  background-color: #99aa00;
+  background-color: #76ff03;
 }
+
+.banner {
+  margin-top: 0;
+}
+
+/* .instructions {
+  height: 40px;
+  width: 40px;
+  top: 0;  
+  background-image: url('../imgs/help.svg');
+  z-index: 4;
+  margin: 0 auto;
+  float: right;
+  position: sticky;
+  overflow: hidden;
+
+} */
 
 .link-btn {
   background: #ffff6e;
