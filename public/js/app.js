@@ -124,22 +124,22 @@ function deleteGame(gameId) {
   $.ajax({
     method: 'DELETE',
     url: GAMES_URL + '/' + gameId,
-		success: getAndDisplayBoardGames
+		success: location.reload()
   });
 }
 
 function handleGameDelete () {
   $('#deleteGameForm').submit(function(e) {
     e.preventDefault();
-		deleteGame($(e.currentTarget).closest('.js-bgame').attr('id'),
-    $(this).velocity("transition.swoopOut", { duration: 750 })
+		deleteGame(
+      $('#deleteGameForm').find('input[type=hidden]').val()
     );
   });
 }
 
 // filtering games based on icons at the top
 function handleGameFilter() {
-	$('header').on('click', '#meeple', (function(e) {
+	$('html').on('click', '#meeple', (function(e) {
 		$('.Board').each(function(){
       $(this).parent().toggle();
       $('#meeple').toggleClass('hidden');
