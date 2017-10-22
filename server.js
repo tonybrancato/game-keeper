@@ -1,16 +1,11 @@
-// require('dotenv').config();
 const express = require('express');
 const bodyParser = require('body-parser');
 const morgan = require('morgan');
 const mongoose = require('mongoose');
 const passport = require('passport');
 
-
-// const {router: usersRouter} = require('./users');
-// const {router: authRouter, basicStrategy, jwtStrategy} = require('./auth');
 const gamesRouter = require('./board-games/router.js')
 
-// ES6 promises for mongoose
 mongoose.Promise = global.Promise;
 
 const {PORT, DATABASE_URL} = require('./config');
@@ -21,29 +16,8 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false })); 
 app.use(morgan('common'));
 app.use(express.static('public'));
-// app.use(passport.initialize());
-
-// passport.use(basicStrategy);
-// passport.use(jwtStrategy);
-
-// app.use('/api/users/', usersRouter);
-// app.use('/api/auth/', authRouter);
-
-// app.get('/', (req, res) => {
-//   res.sendFile(__dirname + '/views/index.html');
-// });
 
 app.use('/api/board-games', gamesRouter);
-
-
-// app.get('/api/board-games',
-//     passport.authenticate('jwt', {session: false}),
-//     (req, res) => {
-//         return res.json({
-//             data: 'rosebud'
-//         });
-//     }
-// );
 
 app.use('*', function(req, res) {
   res.status(404).json({message: 'Not Found'});
