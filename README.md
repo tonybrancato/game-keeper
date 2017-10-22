@@ -12,11 +12,11 @@ This app is perfect for people that play a wide variety of games and want to beg
 
 Mobile View:
 
-<img src="GameKeeper-mobile-view.jpeg" alt="mobile view" height="400px">
+<img src="GameKeeper-mobile-view.jpeg" alt="mobile view" height="300px">
 
 Desktop View:
 
-<img src="Gamekeeper-desktop-view.jpeg" alt="desktop view" height="400px">
+<img src="gamekeeper-desktop-view.jpeg" alt="desktop view" height="300px">
 
 ## Where Can I use it?
 #### [_Live Example_](https://quiet-oasis-80361.herokuapp.com/#)
