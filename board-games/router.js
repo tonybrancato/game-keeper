@@ -19,7 +19,6 @@ var jsonParser = bodyParser.json();
 router.get('/', (req, res) => {
   BoardGame
     .find()
-    .limit(10)
     .then(boardGames => {
       res.json({
         boardGames: boardGames.map(
