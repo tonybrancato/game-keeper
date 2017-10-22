@@ -3,4 +3,4 @@ node_modules
 .env
 storage.js
 package-lock.json
-games.json
+games.json 
