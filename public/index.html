@@ -35,24 +35,64 @@
   </head>
 
   <!---Banner/Title-->
-  
-  <header role="heading">
-    <h1 class="banner" role="banner">GameKeeper</h1>
-    <section class="icons">
-      <img class="game-icon" id="meeple" src="./imgs/meeple.svg">
-      <img class="game-icon" id="d20" src="./imgs/dice-twenty.svg">
-      <img class="game-icon" id="cards" src="./imgs/poker-hand.svg">
-      <img class="game-icon" id="videoGame" src="./imgs/console-controller.svg">
-    </section>
-    <div><a class="link-btn add-game-btn" href="#addGameForm" rel="modal:open">Add Game</a></div>
-  </header>
 
   <body>
+  <!-- <div class="instructions"><a href="#appInstructionsForm" rel="modal:open"><img src="../imgs/help.svg" alt="instructions"></a></div>       -->
+  <div class="nav-bar">
+    <nav class="nav" role="navigation">
+        <a  href="#appInstructionsForm" rel="modal:open"><img class="help" src="../imgs/help.svg" alt="instructions"></a>
+    </nav>
+  </div>
+
+  <header role="heading">
+      <h1 class="banner" role="banner">GameKeeper</h1>
+      <section class="icons">
+        <img class="game-icon" id="meeple" src="./imgs/meeple.svg">
+        <img class="game-icon" id="d20" src="./imgs/dice-twenty.svg">
+        <img class="game-icon" id="cards" src="./imgs/poker-hand.svg">
+        <img class="game-icon" id="videoGame" src="./imgs/console-controller.svg">
+      </section>
+      <div><a class="link-btn add-game-btn" href="#addGameForm" rel="modal:open">Add Game</a></div>
+    </header>
+  
+    <section  style="display:none;">
+      <form id="appInstructionsForm" class="modal">
+        <h2>Welcome to GameKeeper!</h2>
+        <p>Here you can keep track of all 
+          your games, regardless of their medium.</p>
+        <p> Track each play of your favorite board game, or keep track
+           of your ongoing Dungeons and Dragons game.</p>
+        <p>
+            Click <strong>ADD GAME</strong> to get started and add your first game!
+        </p>
+        <p>
+            After you've added the game to the library and played it, 
+            click <strong>NEW PLAY</strong> in order to track a play session.
+        </p>
+        <p>
+            Once your game collection grows a bit, you may want to filter the results. 
+            Simply click the corresponding icon at the top of the page to hide games of that type.
+            <br>Click the icon again and they'll come back! 
+        </p>
+        <p>
+            Now get out there and play some games!
+        </p>
+      </form>
+    </section>
+
+    <section id="deleteGame" style="display:none;">
+      <form id="deleteGameForm" class="modal">
+        <input type="hidden" value="">
+        <h2></h2>
+        <p>If you pressed this by mistake please close this and resume gaming!</p>
+        <button type="submit" id="yesDeleteGame">Yes, Delete It!</button>
+      </form>
+    </section>
 
     <section role="" id="addNewGame" style="display:none;">
       <form id="addGameForm" class="modal">
         <label for="game-name">Game Name</label>
-        <input id="game-name" class="modal-input" name="game-name" maxlength="20" type="text" placeholder="e.g., Monopoly">
+        <input id="game-name" class="modal-input" name="game-name" maxlength="18" type="text" placeholder="e.g., Monopoly">
         <label for="game-type">Game Type</label>
         <select name="game-type" id="gameType" class="modal-input"> 
           <option value="Board Game">Board Game</option>
