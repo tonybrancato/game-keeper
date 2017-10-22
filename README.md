@@ -16,7 +16,7 @@ Mobile View:
 
 Desktop View:
 
-<img src="Gamekeeper-desktop-view.jpeg" alt="mobile view" height="400px">
+<img src="Gamekeeper-desktop-view.jpeg" alt="desktop view" height="400px">
 
 ## Where Can I use it?
 #### [_Live Example_](https://quiet-oasis-80361.herokuapp.com/#)
