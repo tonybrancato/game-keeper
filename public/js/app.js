@@ -1,5 +1,19 @@
 const GAMES_URL = '/api/board-games';
 
+// Retrieve games from the db and display each of them in their
+// own box in the DOM. 
+function getAndDisplayBoardGames() {
+  $.getJSON(GAMES_URL, function(result) {
+  	let element = result.boardGames;
+    let boardGameElements = $(element).map(function(i) {
+     return makeBoardGame(element[i].id, element[i].name, element[i].type, element[i].players, element[i].plays);
+    }).get();
+		$('.game-box').html(boardGameElements); 
+		$('.js-bgame').velocity("transition.swoopIn", { duration: 600, stagger: 100 })
+  }); 
+}
+
+// ADD GAMES
 function makeBoardGame(id, name, type, players, plays) {
 	console.log(id, name, type, players, plays);
   return (
@@ -13,24 +27,27 @@ function makeBoardGame(id, name, type, players, plays) {
         </div>
         <div class="bgame-controls">
           <a href="#updatePlayForm" rel="modal:open" class="link-btn js-new-play">New Play</a>          
-          <a href="#" class="link-btn js-bgame-delete">Delete</a>          
+          <a href="#deleteGameForm" class="link-btn js-bgame-delete" rel="modal:open">Delete</a>          
         </div> 
       </div>
     </div>`
   );
 }
 
-// retrieve games from the db and display each of them in their
-// own box in the DOM. 
-function getAndDisplayBoardGames() {
-  $.getJSON(GAMES_URL, function(result) {
-  	let element = result.boardGames;
-    let boardGameElements = $(element).map(function(i) {
-     return makeBoardGame(element[i].id, element[i].name, element[i].type, element[i].players, element[i].plays);
-    }).get();
-		$('.game-box').html(boardGameElements); 
-		$('.js-bgame').velocity("transition.swoopIn", { duration: 600, stagger: 100 })
-  }); 
+function handleGameAdd () {
+  $('#addGameForm').submit(function(e) {
+    e.preventDefault();
+    const bgame = $(e.currentTarget);
+    addGame({
+			name: bgame.find('#game-name').val(),
+			type: bgame.find('#gameType').val(),
+      genre: bgame.find('#genre').val(),
+      players: {
+        min: bgame.find('#numPlayersMin').val(),
+        max: bgame.find('#numPlayersMax').val(),
+			}
+    });
+  });
 }
 
 function addGame(game) {
@@ -49,6 +66,7 @@ function addGame(game) {
   });
 }
 
+// UPDATE GAMES
 function updateGame(game) {
   console.log('updating game with' + JSON.stringify(game));
   console.log(GAMES_URL + '/' + game.id);
@@ -90,6 +108,17 @@ function handleAddPlay () {
   });
 }
 
+// DELETE GAMES 
+function findGameToDelete (e) {
+  $('body').on('click', '.js-bgame-delete', (function(e) {
+    let foo = $(e.currentTarget).closest('.js-bgame').attr('id');
+   $('#deleteGameForm').find('input[type=hidden]').val(`${foo}`);
+   $('#deleteGameForm').find('h2').text('');
+   $('#deleteGameForm').find('h2').append(`Are you sure you want
+   to permanently delete this game from the library?`);
+  }));
+}
+
 function deleteGame(gameId) {
   console.log(`deleting ${gameId} from database`)
   $.ajax({
@@ -99,36 +128,14 @@ function deleteGame(gameId) {
   });
 }
 
-function handleGameAdd () {
-  $('#addGameForm').submit(function(e) {
-    e.preventDefault();
-    const bgame = $(e.currentTarget);
-    addGame({
-			name: bgame.find('#game-name').val(),
-			type: bgame.find('#gameType').val(),
-      genre: bgame.find('#genre').val(),
-      players: {
-        min: bgame.find('#numPlayersMin').val(),
-        max: bgame.find('#numPlayersMax').val(),
-			}
-    });
-  });
-}
-
-// function displayLastPlayedGame () {
-	
-// }
-
 function handleGameDelete () {
-  $('body').on('click', '.js-bgame-delete', (function(e) {
+  $('#deleteGameForm').submit(function(e) {
     e.preventDefault();
 		deleteGame($(e.currentTarget).closest('.js-bgame').attr('id'),
-		$(this).velocity("transition.swoopOut", { duration: 750 })
-);
-  }));
+    $(this).velocity("transition.swoopOut", { duration: 750 })
+    );
+  });
 }
-
-
 
 // filtering games based on icons at the top
 function handleGameFilter() {
@@ -165,6 +172,7 @@ function handleGameFilter() {
 $(function() {
   getAndDisplayBoardGames();
   handleGameAdd();
+  findGameToDelete();
   handleGameDelete();
   handleAddPlay();
   handleGameFilter();
