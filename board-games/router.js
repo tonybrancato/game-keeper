@@ -87,10 +87,8 @@ router.put('/:id', jsonParser, (req, res) => {
    }
  });
 
-console.log(`req.params.id = ${req.params.id} and req.body.id = ${req.body.id}`)
-
  BoardGame
-  .findByIdAndUpdate(req.params.id, {$push: toUpdate}, console.log(toUpdate))
+  .findByIdAndUpdate(req.params.id, {$push: toUpdate})
   .then(boardGame => res.status(204).end())
   .catch(err => res.status(500).json({message: 'Internal server error'}));
 });

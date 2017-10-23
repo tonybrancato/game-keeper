@@ -5,6 +5,7 @@ const mongoose = require('mongoose');
 
 const should = chai.should();
 
+
 const {BoardGame} = require('../models');
 const {app, runServer, closeServer} = require('../server');
 const {TEST_DATABASE_URL} = require('../config');
@@ -60,6 +61,7 @@ describe('GameKeeper API resource', function() {
     // 1. make a request to /api/board-games
     // 2. inspect response object and prove it has the right code and have
     // correct keys in response.
+    
   // GET
     let res;
     return chai.request(app)
@@ -67,7 +69,6 @@ describe('GameKeeper API resource', function() {
       .then(function(_res) {
         res = _res;
         res.should.have.status(200);
-        console.log(res.body);
         res.should.be.json;
         res.body.should.be.a('object');        
         res.body.boardGames.length.should.be.at.least(1);
@@ -93,7 +94,6 @@ describe('GameKeeper API resource', function() {
           res.body.id.should.not.be.null;
           res.body.id.should.not.be.undefined;
           res.body.type.should.equal(newGame.type);
-          // res.body.genre.should.equal(newGame.genre);
           res.body.name.should.equal(newGame.name);
           return BoardGame.findById(res.body.id);
         })
@@ -117,34 +117,23 @@ describe('GameKeeper API resource', function() {
     };
 
     return chai.request(app)
-      // first have to get so we have an idea of object to update
       .get('/api/board-games')
       .then(function(res) {
         updateData.id = res.body.boardGames[0].id;
-        console.log(`updateData === ${JSON.stringify(updateData)}`)        
-        console.log(`updateData.id === ${updateData.id}`)
-        console.log(`updateData.id === ${(res.body.boardGames[0].id)}`)
         return chai.request(app)
           .put(`/api/board-games/${updateData.id}`)
-          console.log('&&&&&' + JSON.stringify(req.body.id))
           .send(updateData);
       })
-      // prove that the PUT request has right status code
-      // and returns updated item
-      // .then(function(res) {
-      //   res.should.have.status(204);
-      //   // res.should.be.json;
-      //   res.body.should.be.a('object');
-      //   res.body.should.deep.equal(updateData);
-      // });
+      .then(function(res) {
+        res.should.have.status(204);
+        res.request._data.should.be.a('object');
+        res.request._data.should.deep.equal(updateData);
+      });
   });
-
 
   // DELETE 
   it('should delete items on DELETE', function() {
     return chai.request(app)
-      // first have to get so we have an `id` of item
-      // to delete
       .get('/api/board-games')
       .then(function(res) {
         return chai.request(app)
