@@ -54,6 +54,7 @@
       <div><a class="link-btn add-game-btn" href="#addGameForm" rel="modal:open">Add Game</a></div>
   </header>
   
+    <!-- Application Instructions -->
     <section  style="display:none;">
       <form id="appInstructionsForm" class="modal">
         <h2>Welcome to GameKeeper!</h2>
@@ -79,6 +80,7 @@
       </form>
     </section>
 
+    <!-- Delte Game Modal -->
     <section id="deleteGame" style="display:none;">
       <form id="deleteGameForm" class="modal">
         <input type="hidden" value="">
@@ -88,7 +90,8 @@
       </form>
     </section>
 
-    <section role="" id="addNewGame" style="display:none;">
+    <!-- New Game Modal -->
+    <section id="addNewGame" style="display:none;">
       <form id="addGameForm" class="modal">
         <label for="game-name">Game Name</label>
         <input id="game-name" class="modal-input" name="game-name" maxlength="18" type="text" placeholder="e.g., Monopoly">
@@ -108,6 +111,8 @@
         <button type="submit" id="addGame">Add Game</button>
       </form>
     </section>  
+
+    <!-- New Play Modal -->
     <div id="updatePlay" style="display:none;">
       <form id="updatePlayForm" class="modal">
         <input type="hidden" value="">
@@ -123,6 +128,7 @@
       <div class="game-box row">
         
       </div>
+      
     </main>
   </body>
 </html> 
