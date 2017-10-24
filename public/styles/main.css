@@ -85,19 +85,6 @@ button:hover {
   margin-top: 0;
 }
 
-/* .instructions {
-  height: 40px;
-  width: 40px;
-  top: 0;  
-  background-image: url('../imgs/help.svg');
-  z-index: 4;
-  margin: 0 auto;
-  float: right;
-  position: sticky;
-  overflow: hidden;
-
-} */
-
 .link-btn {
   background: #ffff6e;
   padding: 8px 20px;
@@ -222,6 +209,7 @@ button:hover {
 .game-name {
   font-weight: bold;
   font-size: 16pt;
+  letter-spacing: -.5px; /* This is a fix for displaying beyond a single line in Safari */
   background-color: #79b700;
   padding: 15px;
   margin: 0;
