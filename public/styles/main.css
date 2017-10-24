@@ -41,7 +41,11 @@ h3 {
   border-top-right-radius: 3pt;
 }
 
-p {
+ol {
+  text-align: left;
+}
+
+li {
   margin: 10px;
 }
 
@@ -87,7 +91,8 @@ button:hover {
 
 .link-btn {
   background: #ffff6e;
-  padding: 8px 20px;
+  padding: 8px 10px;
+  margin: 0 12px 0 12px;
   text-transform: uppercase;
   letter-spacing: 1px;
   font-size: 13px;
@@ -162,6 +167,10 @@ button:hover {
   cursor: pointer;
   margin-left: 3px;
   margin-right: 3px;
+}
+
+.tooltip {
+
 }
 
 .js-bgame-plays {

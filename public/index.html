@@ -23,7 +23,6 @@
     integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE="
     crossorigin="anonymous"></script>
     <script src="./js/jquery.modal.min.js" type="text/javascript" charset="utf-8"></script>
-    <script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.17.0/dist/jquery.validate.min.js" type="text/javascript" charset="utf-8"></script></script>
     <script src="//cdn.jsdelivr.net/velocity/1.5/velocity.min.js"></script>
     <script src="//cdn.jsdelivr.net/velocity/1.5/velocity.ui.min.js"></script>
     <script src="./js/app.js"></script>
@@ -47,7 +46,7 @@
   <header role="heading">
       <h1 class="banner" role="banner">GameKeeper</h1>
       <section class="icons">
-        <img class="game-icon" id="meeple" src="./imgs/meeple.svg">
+        <img class="game-icon tooltip-no-filter" id="meeple" src="./imgs/meeple.svg">
         <img class="game-icon" id="d20" src="./imgs/dice-twenty.svg">
         <img class="game-icon" id="cards" src="./imgs/poker-hand.svg">
         <img class="game-icon" id="videoGame" src="./imgs/console-controller.svg">
@@ -61,23 +60,18 @@
         <h2>Welcome to GameKeeper!</h2>
         <p>Here you can keep track of all 
           your games, regardless of their medium.</p>
-        <p> Track each play of your favorite board game, or keep track
-           of your ongoing Dungeons and Dragons game.</p>
-        <p>
-            Click <strong>ADD GAME</strong> to get started and add your first game!
-        </p>
-        <p>
-            After you've added the game to the library and played it, 
-            click <strong>NEW PLAY</strong> in order to track a play session.
-        </p>
+        <ol>
+          <li>Click <strong>ADD GAME</strong> to get started and add your first game!</li>
+          <li>After you've played the new game, click <strong>NEW PLAY</strong> in order to add a play session.</li>
+          <li>Play more games!</li>
+        </ol>
+        
         <p>
             Once your game collection grows a bit, you may want to filter the results. 
             Simply click the corresponding icon at the top of the page to hide games of that type.
             <br>Click the icon again and they'll come back! 
         </p>
-        <p>
-            Now get out there and play some games!
-        </p>
+
       </form>
     </section>
 
