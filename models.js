@@ -22,11 +22,6 @@ boardGameSchema.virtual('numOfPlayers').get(function() {
   else 
   return `${this.players.min} to ${this.players.max}`.trim()});
 
-boardGameSchema.virtual('lastPlayDate').get(function() {
-  const playDateObj = this.plays.sort((a, b) => {return b.date - a.date})[0] || {};
-  return playDateObj.lastPlayDate;
-});
-
 boardGameSchema.methods.apiRepr = function() {
 
   return {
