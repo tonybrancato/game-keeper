@@ -237,7 +237,7 @@ button:hover {
   background-color: #ffff6e;
   border: none;
   border-radius: 3pt;
-  margin: 0 auto;
+  margin: 5px auto;
 }
 
 ::-webkit-input-placeholder {
