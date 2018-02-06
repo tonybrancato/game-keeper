@@ -105,6 +105,7 @@ button:hover {
 .add-game-btn {
   font-size: 20px;
   border: 1px solid #79b700;
+  margin: 20px;
 }
 
 .add-game-btn:hover {
@@ -167,10 +168,6 @@ button:hover {
   cursor: pointer;
   margin-left: 3px;
   margin-right: 3px;
-}
-
-.tooltip {
-
 }
 
 .js-bgame-plays {
