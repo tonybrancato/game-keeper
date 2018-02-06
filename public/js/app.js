@@ -136,29 +136,29 @@ function handleGameFilter() {
 	$('html').on('click', '#meeple', (function(e) {
 		$('.Board').each(function(){
       $(this).parent().toggle();
-      $('#meeple').toggleClass('hidden');
-		});
+    });
+    $('#meeple').toggleClass('hidden');
 	}));
 
 	$('html').on('click', '#d20', (function(e) {
 		$('.TTRPG').each(function(){
       $(this).parent().toggle();
-      $('#d20').toggleClass('hidden');
-		});
+    });
+    $('#d20').toggleClass('hidden');
 	}));
 
 	$('html').on('click', '#cards', (function(e) {
 		$('.Card').each(function(){
       $(this).parent().toggle();
-      $('#cards').toggleClass('hidden');
-		});
+    });
+    $('#cards').toggleClass('hidden');
 	}));
 
 	$('html').on('click', '#videoGame', (function(e) {
 		$('.Video').each(function(){
       $(this).parent().toggle();
-      $('#videoGame').toggleClass('hidden');
-		});
+    });
+    $('#videoGame').toggleClass('hidden');
 	}));
 }
 
