@@ -46,10 +46,10 @@
   <header role="heading">
       <h1 class="banner" role="banner">GameKeeper</h1>
       <section class="icons">
-        <img class="game-icon" id="meeple" src="./imgs/meeple.svg">
-        <img class="game-icon" id="d20" src="./imgs/dice-twenty.svg">
-        <img class="game-icon" id="cards" src="./imgs/poker-hand.svg">
-        <img class="game-icon" id="videoGame" src="./imgs/console-controller.svg">
+        <div class="icon" tooltip='Board Games'><img class="game-icon" id="meeple" src="./imgs/meeple.svg"></div>
+        <div class="icon" tooltip='Table Top RPGs'><img class="game-icon" id="d20" src="./imgs/dice-twenty.svg"></div>
+        <div class="icon" tooltip='Card Games'><img class="game-icon" id="cards" src="./imgs/poker-hand.svg"></div>
+        <div class="icon" tooltip='Video Games'><img class="game-icon" id="videoGame" src="./imgs/console-controller.svg"></div>
       </section>
       <div><a class="link-btn add-game-btn" href="#addGameForm" rel="modal:open">Add Game</a></div>
   </header>
@@ -109,7 +109,7 @@
 
     <!-- New Play Modal -->
     <div id="updatePlay" style="display:none;">
-      <form id="updatePlayForm" class="modal">
+      <form id="updatePlayForm"  class="modal">
         <input type="hidden" value="">
         <label for="numGamePlayers">How many players were there?</label>
         <input id="numGamePlayers" class="modal-input" name="numGamePlayers" type="number" maxlength="2">
