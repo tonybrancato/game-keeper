@@ -135,22 +135,23 @@ button:hover {
   display: inline;
 }
 
+.win-lose-box {
+  margin-top: 20px;
+  margin-bottom: 10px;
+}
+
 .win-lose {
   width: 100px;
   border: 1px solid black;
   font-size: 14pt;
   cursor: pointer;
   background: #ffff6e;
-  margin: 0;
   padding: 10px 20px;
 }
 
 input[type=radio]:checked + label {
   background: #76ff03;
 }
-/* 
-.win-lose-clicked {
-} */
 
 /* Tooltip Styles */
 
@@ -332,6 +333,11 @@ input[type=radio] {
   max-width: 500px;
 }
 
+#gameCard {
+  max-width: 800px;
+  height: 200px;
+}
+
 .addGameForm {
   max-width: 200px;
   margin: 0 auto;
@@ -355,12 +361,14 @@ input[type=radio] {
   opacity: .6;
 }
 
-#addGame {
-  background-color: #cddc39;
-  margin-top: 10px;
+#addGame, #addPlay {
+  background-color: #ffff6e;
+  margin-top: 20px;
+  border: 1px solid #000;
   float: right;
 }
 
-#addGame:hover {
-  background-color: #aeea00;
+#addGame:hover, #addPlay:hover {
+  background-color: #76ff03;
+  box-shadow: 0 3px 2px -2px black;
 }
