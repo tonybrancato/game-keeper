@@ -80,13 +80,13 @@ router.put('/:id', jsonParser, (req, res) => {
  }
  
  const toUpdate = {};
- const updatableFields = ['plays'];
+ const updatableFields = ['plays', 'scores', 'wins'];
  updatableFields.forEach(field => {
    if (field in req.body) {
      toUpdate[field] = req.body[field];
    }
  });
-
+console.log(toUpdate);
  BoardGame
   .findByIdAndUpdate(req.params.id, {$push: toUpdate})
   .then(boardGame => res.status(204).end())

@@ -6,7 +6,14 @@ function getAndDisplayBoardGames() {
   $.getJSON(GAMES_URL, function(result) {
   	let element = result.boardGames;
     let boardGameElements = $(element).map(function(i) {
-     return makeBoardGame(element[i].id, element[i].name, element[i].type, element[i].players, element[i].plays);
+      return makeBoardGame(
+        element[i].id, 
+        element[i].name, 
+        element[i].type, 
+        element[i].players, 
+        element[i].plays, 
+        element[i].averageScore
+      );
     }).get();
 		$('.game-box').html(boardGameElements); 
 		$('.js-bgame').velocity("transition.swoopIn", { duration: 600, stagger: 100 })
@@ -14,7 +21,8 @@ function getAndDisplayBoardGames() {
 }
 
 // ADD GAMES
-function makeBoardGame(id, name, type, players, plays) {
+function makeBoardGame(id, name, type, players, plays, averageScore) {
+  console.log(id, name, type, players, plays, averageScore);
   return (
     `<div class="col-3">
       <div class="js-bgame" id="${id}">
@@ -23,6 +31,8 @@ function makeBoardGame(id, name, type, players, plays) {
         <div class="js-bgame-info">
           <p class="js-bgame-players">Players: ${players}</p>
           <p class="js-bgame-plays">Total Plays: ${plays}</p>
+          <p class="js-bgame-avg-score">My Average Score: ${averageScore}</p>
+          <p class="js-bgame-win-loss">Wins/Losses: 1-0</p>          
         </div>
         <div class="bgame-controls">
           <a href="#updatePlayForm" rel="modal:open" class="link-btn js-new-play">New Play</a>          
@@ -96,9 +106,11 @@ function handleAddPlay () {
     updateGame({
       id: bgame.find('input[type=hidden]').val(),
       plays: {
-        date: Date(),
-        players: bgame.find('#numGamePlayers').val()
-      }
+        date: bgame.find('#playDate').val(),
+        players: bgame.find('#numGamePlayers').val(),
+      },
+      scores: bgame.find('#score').val(),
+      wins: bgame.find("input:radio[name='win-lose']:checked").val()
     });
   });
 }
@@ -106,8 +118,8 @@ function handleAddPlay () {
 // DELETE GAMES 
 function findGameToDelete (e) {
   $('body').on('click', '.js-bgame-delete', (function(e) {
-    let foo = $(e.currentTarget).closest('.js-bgame').attr('id');
-   $('#deleteGameForm').find('input[type=hidden]').val(`${foo}`);
+    let game = $(e.currentTarget).closest('.js-bgame').attr('id');
+   $('#deleteGameForm').find('input[type=hidden]').val(`${game}`);
    $('#deleteGameForm').find('h2').text('');
    $('#deleteGameForm').find('h2').append(`Are you sure you want
    to permanently delete this game from the library?`);
@@ -162,6 +174,12 @@ function handleGameFilter() {
 	}));
 }
 
+// function handleLabelSelect() {
+//   $('.win-lose').on('click', 'label', function() {
+//     $(this).toggleClass('win-lose-clicked');
+//   });
+// }
+
 // ready function, for page load
 $(function() {
   getAndDisplayBoardGames();
@@ -171,4 +189,5 @@ $(function() {
   handleAddPlay();
   handleGameFilter();
   handleNewPlay();
+  // handleLabelSelect();
 });

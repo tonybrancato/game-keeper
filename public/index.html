@@ -19,8 +19,8 @@
     <meta name="theme-color" content="#ffffff">
 
     <script
-    src="https://code.jquery.com/jquery-3.2.1.js"
-    integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE="
+    src="http://code.jquery.com/jquery-3.3.1.min.js"
+    integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
     crossorigin="anonymous"></script>
     <script src="./js/jquery.modal.min.js" type="text/javascript" charset="utf-8"></script>
     <script src="//cdn.jsdelivr.net/velocity/1.5/velocity.min.js"></script>
@@ -111,9 +111,17 @@
     <div id="updatePlay" style="display:none;">
       <form id="updatePlayForm"  class="modal">
         <input type="hidden" value="">
-        <label for="numGamePlayers">How many players were there?</label>
+        <p>How many players were there?</p>
         <input id="numGamePlayers" class="modal-input" name="numGamePlayers" type="number" maxlength="2">
-        <!-- How long was the game? - 2 select boxes, onne = hours, one = minutes -->
+        <p>What date did you play on?</p>
+        <input id="playDate" class="modal-input" name="playDate" type="date">
+        <p>What was your score?</p>
+        <input id="score" placeholder="Leave Blank if N/A" class="modal-input" name="score" type="number">
+        <p>Win or Lose?</p>
+        <div class="win-lose-box">
+          <input type="radio" id="win" name="win-lose" value="1"><label for="win" class="win-lose">Win</label>
+          <input type="radio" id="lose" name="win-lose" value="0"><label for="lose" class="win-lose">Lose</label>
+        </div>
         <button type="submit" id="addPlay">Add Play</button>
       </form> 
     </div>
