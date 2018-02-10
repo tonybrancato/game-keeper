@@ -56,12 +56,15 @@ router.post('/', (req, res) => {
   }
 
   BoardGame
-    .create({
-      name: req.body.name,
-      type: req.body.type,
-      players: req.body.players,
-      genre: req.body.genre,
-      plays: req.body.plays})
+    .create(
+      {
+        name: req.body.name,
+        type: req.body.type,
+        players: req.body.players,
+        genre: req.body.genre,
+        plays: req.body.plays
+      }
+    )
     .then(
       boardGame => res.status(201).json(boardGame.apiRepr()))
     .catch(err => {
@@ -80,13 +83,13 @@ router.put('/:id', jsonParser, (req, res) => {
  }
  
  const toUpdate = {};
- const updatableFields = ['plays'];
+ const updatableFields = ['plays', 'scores', 'wins'];
  updatableFields.forEach(field => {
    if (field in req.body) {
      toUpdate[field] = req.body[field];
    }
  });
-
+console.log(toUpdate);
  BoardGame
   .findByIdAndUpdate(req.params.id, {$push: toUpdate})
   .then(boardGame => res.status(204).end())

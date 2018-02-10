@@ -17,7 +17,10 @@ function generateBoardGameData() {
     name: faker.commerce.productName(),
     type: faker.commerce.productMaterial(),
     genre: faker.commerce.color(),
-
+    players: {
+      min: 2,
+      max: 4
+    }
  }
 }
 
@@ -68,6 +71,7 @@ describe('GameKeeper API resource', function() {
       .get('/api/board-games')
       .then(function(_res) {
         res = _res;
+        console.log(res.body.boardGames)
         res.should.have.status(200);
         res.should.be.json;
         res.body.should.be.a('object');        

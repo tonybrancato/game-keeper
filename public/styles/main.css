@@ -135,14 +135,22 @@ button:hover {
   display: inline;
 }
 
-/**
- * Demo styles
- * Not needed for tooltips to work
- */
+.win-lose-box {
+  margin-top: 20px;
+  margin-bottom: 10px;
+}
 
-/* `border-box`... ALL THE THINGS! */
-html {
-  box-sizing: border-box;
+.win-lose {
+  width: 100px;
+  border: 1px solid black;
+  font-size: 14pt;
+  cursor: pointer;
+  background: #ffff6e;
+  padding: 10px 20px;
+}
+
+input[type=radio]:checked + label {
+  background: #76ff03;
 }
 
 /* Tooltip Styles */
@@ -296,11 +304,43 @@ html {
   padding-bottom: 15px;
 }
 
+input {
+  display: block;
+}
+
+input[type=radio] {
+  visibility: hidden;
+  display: none;
+}
+
 /* jQuery Modal overridden styles */
 
 .modal {
   background-color: #99aa00;
   text-align: center;
+  margin: 0 auto;
+  max-width: 300px;
+}
+
+.modal p {
+  text-align: left;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  font-weight: 900;
+}
+
+#deleteGameForm, appInstructionsForm {
+  max-width: 500px;
+}
+
+#gameCard {
+  max-width: 800px;
+  height: 200px;
+}
+
+.addGameForm {
+  max-width: 200px;
+  margin: 0 auto;
 }
 
 .modal-input {
@@ -308,6 +348,7 @@ html {
   border: none;
   border-radius: 3pt;
   margin: 5px auto;
+  width: 100%;
 }
 
 ::-webkit-input-placeholder {
@@ -320,12 +361,14 @@ html {
   opacity: .6;
 }
 
-#addGame {
-  background-color: #cddc39;
-  margin-top: 10px;
+#addGame, #addPlay {
+  background-color: #ffff6e;
+  margin-top: 20px;
+  border: 1px solid #000;
   float: right;
 }
 
-#addGame:hover {
-  background-color: #aeea00;
+#addGame:hover, #addPlay:hover {
+  background-color: #76ff03;
+  box-shadow: 0 3px 2px -2px black;
 }
