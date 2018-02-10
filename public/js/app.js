@@ -23,7 +23,6 @@ function getAndDisplayBoardGames() {
 
 // ADD GAMES
 function makeBoardGame(id, name, type, players, plays, averageScore, winsAndLosses) {
-  console.log(id, name, type, players, plays, averageScore, winsAndLosses);
   return (
     `<div class="col-3">
       <div class="js-bgame" id="${id}">

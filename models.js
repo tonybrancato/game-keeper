@@ -40,7 +40,6 @@ boardGameSchema.virtual('winsAndLosses').get(function() {
     const wins = this.wins.map(Number);
     const totalWins = wins.reduce((x, y) => x + y);
     const totalLosses = this.wins.length - totalWins;
-    console.log(totalWins, totalLosses);
     return `Wins: ${totalWins} Losses: ${totalLosses}`;
   }
   else
