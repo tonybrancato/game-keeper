@@ -7,7 +7,8 @@ const boardGameSchema = mongoose.Schema({
   type: {type: String, required: true},
   players: {
     min: {type: Number, required: true},
-    max: {type: Number, required: true}
+    max: {type: Number, required: true},
+    type: Object
   },
   genre: {type: String, required: true},
   plays: [{
