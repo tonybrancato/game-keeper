@@ -88,22 +88,24 @@
     <!-- New Game Modal -->
     <section id="addNewGame" style="display:none;">
       <form id="addGameForm" class="modal">
-        <label for="game-name">Game Name</label>
-        <input id="game-name" class="modal-input" name="game-name" maxlength="18" type="text" placeholder="e.g., Monopoly">
-        <label for="game-type">Game Type</label>
-        <select name="game-type" id="gameType" class="modal-input"> 
-          <option value="Board Game">Board Game</option>
-          <option value="TTRPG">Table-Top RPG</option>
-          <option value="Video Game">Video Game</option>
-          <option value="Card Game">Card Game</option>
-        </select>
-        <label for="numPlayersMin">Minimum Players</label>
-        <input id="numPlayersMin" class="modal-input" name="numPlayersMin" maxlength="2" type="number" placeholder="1">
-        <label for="numPlayersMax">Maximum Players</label>
-        <input id="numPlayersMax" class="modal-input" name="numPlayersMax" maxlength="3" type="number" placeholder="6">
-        <label for="genre">Genre</label>
-        <input id="genre" class="modal-input" name="genre" type="text" maxlength="20" placeholder="e.g., Strategy">
-        <button type="submit" id="addGame">Add Game</button>
+        <div class="addGameForm">
+          <p>Game Name</p>
+          <input id="game-name" class="modal-input" name="game-name" maxlength="18" type="text" placeholder="e.g., Monopoly">
+          <p>Game Type</p>
+          <select name="game-type" id="gameType" class="modal-input"> 
+            <option value="Board Game">Board Game</option>
+            <option value="TTRPG">Table-Top RPG</option>
+            <option value="Video Game">Video Game</option>
+            <option value="Card Game">Card Game</option>
+          </select>
+          <p>Minimum Players</p>
+          <input id="numPlayersMin" class="modal-input" name="numPlayersMin" maxlength="2" type="number" placeholder="1">
+          <p>Maximum Players</p>
+          <input id="numPlayersMax" class="modal-input" name="numPlayersMax" maxlength="3" type="number" placeholder="6">
+          <p>Genre</p>
+          <input id="genre" class="modal-input" name="genre" type="text" maxlength="20" placeholder="e.g., Strategy">
+          <button type="submit" id="addGame">Add Game</button>
+        </div>
       </form>
     </section>  
 

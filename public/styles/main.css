@@ -135,15 +135,22 @@ button:hover {
   display: inline;
 }
 
-/**
- * Demo styles
- * Not needed for tooltips to work
- */
-
-/* `border-box`... ALL THE THINGS! */
-html {
-  box-sizing: border-box;
+.win-lose {
+  width: 100px;
+  border: 1px solid black;
+  font-size: 14pt;
+  cursor: pointer;
+  background: #ffff6e;
+  margin: 0;
+  padding: 10px 20px;
 }
+
+input[type=radio]:checked + label {
+  background: #76ff03;
+}
+/* 
+.win-lose-clicked {
+} */
 
 /* Tooltip Styles */
 
@@ -296,11 +303,38 @@ html {
   padding-bottom: 15px;
 }
 
+input {
+  display: block;
+}
+
+input[type=radio] {
+  visibility: hidden;
+  display: none;
+}
+
 /* jQuery Modal overridden styles */
 
 .modal {
   background-color: #99aa00;
   text-align: center;
+  margin: 0 auto;
+  max-width: 300px;
+}
+
+.modal p {
+  text-align: left;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  font-weight: 900;
+}
+
+#deleteGameForm, appInstructionsForm {
+  max-width: 500px;
+}
+
+.addGameForm {
+  max-width: 200px;
+  margin: 0 auto;
 }
 
 .modal-input {
@@ -308,6 +342,7 @@ html {
   border: none;
   border-radius: 3pt;
   margin: 5px auto;
+  width: 100%;
 }
 
 ::-webkit-input-placeholder {
