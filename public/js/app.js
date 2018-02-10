@@ -12,7 +12,8 @@ function getAndDisplayBoardGames() {
         element[i].type, 
         element[i].players, 
         element[i].plays, 
-        element[i].averageScore
+        element[i].averageScore,
+        element[i].winsAndLosses
       );
     }).get();
 		$('.game-box').html(boardGameElements); 
@@ -21,8 +22,8 @@ function getAndDisplayBoardGames() {
 }
 
 // ADD GAMES
-function makeBoardGame(id, name, type, players, plays, averageScore) {
-  console.log(id, name, type, players, plays, averageScore);
+function makeBoardGame(id, name, type, players, plays, averageScore, winsAndLosses) {
+  console.log(id, name, type, players, plays, averageScore, winsAndLosses);
   return (
     `<div class="col-3">
       <div class="js-bgame" id="${id}">
@@ -32,7 +33,7 @@ function makeBoardGame(id, name, type, players, plays, averageScore) {
           <p class="js-bgame-players">Players: ${players}</p>
           <p class="js-bgame-plays">Total Plays: ${plays}</p>
           <p class="js-bgame-avg-score">My Average Score: ${averageScore}</p>
-          <p class="js-bgame-win-loss">Wins/Losses: 1-0</p>          
+          <p class="js-bgame-win-loss">${winsAndLosses}</p>          
         </div>
         <div class="bgame-controls">
           <a href="#updatePlayForm" rel="modal:open" class="link-btn js-new-play">New Play</a>          

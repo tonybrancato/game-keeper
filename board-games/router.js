@@ -56,12 +56,15 @@ router.post('/', (req, res) => {
   }
 
   BoardGame
-    .create({
-      name: req.body.name,
-      type: req.body.type,
-      players: req.body.players,
-      genre: req.body.genre,
-      plays: req.body.plays})
+    .create(
+      {
+        name: req.body.name,
+        type: req.body.type,
+        players: req.body.players,
+        genre: req.body.genre,
+        plays: req.body.plays
+      }
+    )
     .then(
       boardGame => res.status(201).json(boardGame.apiRepr()))
     .catch(err => {

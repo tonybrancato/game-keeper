@@ -25,29 +25,26 @@ boardGameSchema.virtual('numOfPlayers').get(function() {
   else 
   return `${this.players.min} to ${this.players.max}`.trim()});
 
-// boardGameSchema.virtual('playDate').get(function() {
-
-// })
-
 boardGameSchema.virtual('averageScore').get(function() {
   if (this.scores.length > 0) {
-    const scores = this.scores.map(Number)
+    const scores = this.scores.map(Number);
     return `${Math.floor((scores.reduce((x, y) => x + y)) / scores.length)}`;    
   }
   else
     return 'N/A';
 })
 
-// boardGameSchema.virtual('wins').get(function() {
-//   var dataset = [2,2,4,2,6,4,7,8];
-//   var search = 2;
-  
-//   var count = dataset.reduce(function(n, val) {
-//       return n + (val === search);
-//   }, 0);
-  
-//   console.log(count);
-// })
+boardGameSchema.virtual('winsAndLosses').get(function() {
+  if (this.wins.length > 0) {
+    const wins = this.wins.map(Number);
+    const totalWins = wins.reduce((x, y) => x + y);
+    const totalLosses = this.wins.length - totalWins;
+    console.log(totalWins, totalLosses);
+    return `Wins: ${totalWins} Losses: ${totalLosses}`;
+  }
+  else
+  return `Wins: N/A Losses: N/A`;
+})
 
 boardGameSchema.methods.apiRepr = function() {
 
@@ -59,6 +56,7 @@ boardGameSchema.methods.apiRepr = function() {
     plays: this.plays.length,
     averageScore: this.averageScore,
     lastPlay: this.lastPlayDate,
+    winsAndLosses: this.winsAndLosses
   };
 }
 
